@@ -1,0 +1,182 @@
+﻿@using MegaAuctions.Models;
+@model User
+@{
+    ViewBag.Title = "Profiles";
+    Layout = "~/Views/Shared/_Layout_Seller.cshtml";
+}
+
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+         data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row align-items-center">
+                    <div class="col-md-6 col-8 align-self-center">
+                        <h3 class="page-title mb-0 p-0">Profile</h3>
+                        <div class="d-flex align-items-center">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="~/Seller/Index">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <div class="container-fluid">
+                <!-- Start Page Content -->
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-lg-4 col-xlg-3 col-md-5">
+                        <div class="card">
+                            <div class="card-body profile-card">
+                                <center class="mt-4">
+                                    <img src="~/img/users/imgaccount/@Model.image"
+                                         class="rounded-circle" width="150" />
+                                    <h4 class="card-title mt-2">@Model.name</h4>
+                                    <h6 class="card-subtitle">@Model.Role.nameRole</h6>
+                                    <div class="row text-center justify-content-center">
+                                        <div class="col-4">
+                                            <button onclick="bigshow()" class="btn btn-success">View Image</button>
+                                        </div>
+                                        <div class="col-4">
+                                            <button class="btn btn-primary">Edit Image</button>
+                                        </div>
+                                    </div>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                    <style>
+                        .big350{
+                            width: 350px;
+                        }
+                    </style>
+                    <script>
+                        function bigshow() {
+                            var a = $(".rounded-circle").css("width");
+                            if (a != "350px") {
+                                $(".rounded-circle").addClass("big350");
+                            }
+                            else {
+                                $(".rounded-circle").removeClass("big350");
+                            }
+                        }
+                    </script>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-lg-8 col-xlg-9 col-md-7">
+                        <div class="card">
+                            <div class="card-body">
+                                <form class="form-horizontal form-material mx-2">
+                                    <div class="form-group">
+                                        <label class="col-md-12 mb-0">Full Name</label>
+                                        <div class="col-md-12">
+                                            <input type="text" placeholder="@Model.name"
+                                                   class="form-control ps-0 form-control-line">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="example-email" class="col-md-12">Email</label>
+                                        <div class="col-md-12">
+                                            <input type="email" placeholder="@Model.email"
+                                                   class="form-control ps-0 form-control-line" name="example-email"
+                                                   id="example-email">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12 mb-0">Password</label>
+                                        <div class="col-md-12">
+                                            <input type="password" value="@Model.password"
+                                                   class="form-control ps-0 form-control-line">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12 mb-0">Phone No</label>
+                                        <div class="col-md-12">
+                                            <input type="text" placeholder="@Model.phone"
+                                                   class="form-control ps-0 form-control-line">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12 mb-0">About</label>
+                                        <div class="col-md-12">
+                                            <textarea rows="5" class="form-control ps-0 form-control-line" style="padding: 15px">@Model.about</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-12">Address</label>
+                                        <div class="col-md-12">
+                                            <input type="text" value="@Model.address"
+                                                   class="form-control ps-0 form-control-line">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12 d-flex">
+                                            <button class="btn btn-success mx-auto mx-md-0 text-white">
+                                                Update
+                                                Profile
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                </div>
+                <!-- Row -->
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Right sidebar -->
+                <!-- ============================================================== -->
+                <!-- .right-sidebar -->
+                <!-- ============================================================== -->
+                <!-- End Right sidebar -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <footer class="footer">
+                © 2021 Material Pro Admin by <a href="https://www.wrappixel.com/">wrappixel.com </a>
+            </footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+</body>
+

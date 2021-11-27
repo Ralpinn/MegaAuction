@@ -1,0 +1,344 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MegaAuctionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Auction">
+    <Key>
+      <PropertyRef Name="idauction" />
+    </Key>
+    <Property Name="idauction" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="priceup" Type="nvarchar" MaxLength="20" />
+    <Property Name="dateauction" Type="datetime" />
+    <Property Name="timeauction" Type="nvarchar" MaxLength="20" />
+    <Property Name="statusauction" Type="nvarchar" MaxLength="50" />
+    <Property Name="statusorder" Type="nvarchar" MaxLength="50" />
+    <Property Name="idUser" Type="int" />
+    <Property Name="idproduct" Type="int" />
+  </EntityType>
+  <EntityType Name="Blog">
+    <Key>
+      <PropertyRef Name="idblog" />
+    </Key>
+    <Property Name="idblog" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="titleblog" Type="ntext" />
+    <Property Name="contentblog" Type="ntext" />
+    <Property Name="dateblog" Type="datetime" />
+    <Property Name="imageb1" Type="ntext" />
+    <Property Name="imageb2" Type="ntext" />
+    <Property Name="imageb3" Type="ntext" />
+    <Property Name="idtypeblog" Type="int" />
+    <Property Name="idUser" Type="int" />
+  </EntityType>
+  <EntityType Name="Chat">
+    <Key>
+      <PropertyRef Name="idchat" />
+    </Key>
+    <Property Name="idchat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="contentchat" Type="ntext" />
+    <Property Name="datechat" Type="datetime" />
+    <Property Name="timechat" Type="nvarchar" MaxLength="20" />
+    <Property Name="imagechat" Type="ntext" />
+    <Property Name="idroom" Type="int" />
+  </EntityType>
+  <EntityType Name="DesciptionProduct">
+    <Key>
+      <PropertyRef Name="iddespro" />
+    </Key>
+    <Property Name="iddespro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="color" Type="nvarchar" MaxLength="50" />
+    <Property Name="size" Type="nvarchar" MaxLength="50" />
+    <Property Name="origin" Type="nvarchar" MaxLength="50" />
+    <Property Name="material" Type="nvarchar" MaxLength="50" />
+    <Property Name="condition" Type="nvarchar" MaxLength="50" />
+    <Property Name="other" Type="ntext" />
+  </EntityType>
+  <EntityType Name="ImageProduct">
+    <Key>
+      <PropertyRef Name="idimgpro" />
+    </Key>
+    <Property Name="idimgpro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="image1" Type="ntext" />
+    <Property Name="image2" Type="ntext" />
+    <Property Name="image3" Type="ntext" />
+    <Property Name="image4" Type="ntext" />
+    <Property Name="image5" Type="ntext" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="idorder" />
+    </Key>
+    <Property Name="idorder" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dateorder" Type="datetime" />
+    <Property Name="timeorder" Type="nvarchar" MaxLength="20" />
+    <Property Name="idauction" Type="int" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="idproduct" />
+    </Key>
+    <Property Name="idproduct" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="namepro" Type="ntext" />
+    <Property Name="descriptionpro" Type="ntext" />
+    <Property Name="priceauction" Type="nvarchar" MaxLength="20" />
+    <Property Name="pricebuy" Type="nvarchar" MaxLength="20" />
+    <Property Name="datestart" Type="datetime" />
+    <Property Name="dateend" Type="datetime" />
+    <Property Name="timestart" Type="nvarchar" MaxLength="20" />
+    <Property Name="timeend" Type="nvarchar" MaxLength="20" />
+    <Property Name="statuspro" Type="nvarchar" MaxLength="50" />
+    <Property Name="idtypepro" Type="int" />
+    <Property Name="iddespro" Type="int" />
+    <Property Name="idimgpro" Type="int" />
+    <Property Name="idUser" Type="int" />
+  </EntityType>
+  <EntityType Name="Reviews">
+    <Key>
+      <PropertyRef Name="idreviews" />
+    </Key>
+    <Property Name="idreviews" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="contentrev" Type="ntext" />
+    <Property Name="daterev" Type="datetime" />
+    <Property Name="timerev" Type="nvarchar" MaxLength="20" />
+    <Property Name="numstart" Type="int" />
+    <Property Name="idUser" Type="int" />
+    <Property Name="idproduct" Type="int" />
+  </EntityType>
+  <EntityType Name="RoomChat">
+    <Key>
+      <PropertyRef Name="idroom" />
+    </Key>
+    <Property Name="idroom" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idUser" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TypeBlog">
+    <Key>
+      <PropertyRef Name="idtypeblog" />
+    </Key>
+    <Property Name="idtypeblog" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nametb" Type="nvarchar" MaxLength="50" />
+    <Property Name="imagetb" Type="ntext" />
+  </EntityType>
+  <EntityType Name="TypeProduct">
+    <Key>
+      <PropertyRef Name="idtypepro" />
+    </Key>
+    <Property Name="idtypepro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nametp" Type="ntext" />
+    <Property Name="imagetp" Type="ntext" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="idUser" />
+    </Key>
+    <Property Name="idUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="phone" Type="nvarchar" MaxLength="12" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" />
+    <Property Name="born" Type="datetime" />
+    <Property Name="gender" Type="nvarchar" MaxLength="12" />
+    <Property Name="address" Type="ntext" />
+    <Property Name="image" Type="ntext" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" />
+    <Property Name="about" Type="ntext" />
+    <Property Name="role" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Auction_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="Auction" Type="Self.Auction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="idproduct" />
+      </Principal>
+      <Dependent Role="Auction">
+        <PropertyRef Name="idproduct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Blog_TypeBlog">
+    <End Role="TypeBlog" Type="Self.TypeBlog" Multiplicity="0..1" />
+    <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeBlog">
+        <PropertyRef Name="idtypeblog" />
+      </Principal>
+      <Dependent Role="Blog">
+        <PropertyRef Name="idtypeblog" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Blog_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="Blog">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Chat_RoomChat">
+    <End Role="RoomChat" Type="Self.RoomChat" Multiplicity="0..1" />
+    <End Role="Chat" Type="Self.Chat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoomChat">
+        <PropertyRef Name="idroom" />
+      </Principal>
+      <Dependent Role="Chat">
+        <PropertyRef Name="idroom" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Auction">
+    <End Role="Auction" Type="Self.Auction" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Auction">
+        <PropertyRef Name="idauction" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="idauction" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_DesciptionProduct">
+    <End Role="DesciptionProduct" Type="Self.DesciptionProduct" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DesciptionProduct">
+        <PropertyRef Name="iddespro" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="iddespro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_ImageProduct">
+    <End Role="ImageProduct" Type="Self.ImageProduct" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImageProduct">
+        <PropertyRef Name="idimgpro" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="idimgpro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_TypeProduct">
+    <End Role="TypeProduct" Type="Self.TypeProduct" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeProduct">
+        <PropertyRef Name="idtypepro" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="idtypepro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reviews_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="idproduct" />
+      </Principal>
+      <Dependent Role="Reviews">
+        <PropertyRef Name="idproduct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoomChat_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="RoomChat" Type="Self.RoomChat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="RoomChat">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MegaAuctionModelStoreContainer">
+    <EntitySet Name="Auction" EntityType="Self.Auction" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Blog" EntityType="Self.Blog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Chat" EntityType="Self.Chat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DesciptionProduct" EntityType="Self.DesciptionProduct" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImageProduct" EntityType="Self.ImageProduct" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reviews" EntityType="Self.Reviews" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RoomChat" EntityType="Self.RoomChat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TypeBlog" EntityType="Self.TypeBlog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TypeProduct" EntityType="Self.TypeProduct" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Auction_Product" Association="Self.FK_Auction_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Auction" EntitySet="Auction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Blog_TypeBlog" Association="Self.FK_Blog_TypeBlog">
+      <End Role="TypeBlog" EntitySet="TypeBlog" />
+      <End Role="Blog" EntitySet="Blog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Blog_User" Association="Self.FK_Blog_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Blog" EntitySet="Blog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Chat_RoomChat" Association="Self.FK_Chat_RoomChat">
+      <End Role="RoomChat" EntitySet="RoomChat" />
+      <End Role="Chat" EntitySet="Chat" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Auction" Association="Self.FK_Order_Auction">
+      <End Role="Auction" EntitySet="Auction" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_DesciptionProduct" Association="Self.FK_Product_DesciptionProduct">
+      <End Role="DesciptionProduct" EntitySet="DesciptionProduct" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_ImageProduct" Association="Self.FK_Product_ImageProduct">
+      <End Role="ImageProduct" EntitySet="ImageProduct" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_TypeProduct" Association="Self.FK_Product_TypeProduct">
+      <End Role="TypeProduct" EntitySet="TypeProduct" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_User" Association="Self.FK_Product_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reviews_Product" Association="Self.FK_Reviews_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Reviews" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoomChat_User" Association="Self.FK_RoomChat_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="RoomChat" EntitySet="RoomChat" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

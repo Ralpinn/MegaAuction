@@ -1,0 +1,307 @@
+﻿@using MegaAuctions.Models;
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout_Seller.cshtml";
+    Product depro = ViewBag.DetailProduct;
+}
+
+<style>
+    .mk-product__content .mk-tabs {
+        margin-left: 20px;
+        margin-right: 40px;
+        text-align: justify;
+    }
+    .mk-page--product{
+        margin: 50px 30px 0px 0px;
+    }
+</style>
+<div class="mk-page--product">
+    <div class="mk-container">
+        <div class="mk-page__container">
+            <div class="mk-page__left">
+                <div class="mk-product--detail mk-product--fullwidth">
+                    <div class="mk-product__header">
+                        <div class="mk-product__thumbnail" data-vertical="true">
+                            <figure>
+                                <div class="mk-wrapper">
+                                    <div class="mk-product__gallery" data-arrow="true">
+                                        <div class="item"><a href="~/img/products/ProductofUser/@depro.ImageProduct.image1"><img src="~/img/products/ProductofUser/@depro.ImageProduct.image1" alt=""></a></div>
+                                        <div class="item"><a href="~/img/products/ProductofUser/@depro.ImageProduct.image2"><img src="~/img/products/ProductofUser/@depro.ImageProduct.image2" alt=""></a></div>
+                                        <div class="item"><a href="~/img/products/ProductofUser/@depro.ImageProduct.image3"><img src="~/img/products/ProductofUser/@depro.ImageProduct.image3" alt=""></a></div>
+                                        <div class="item"><a href="~/img/products/ProductofUser/@depro.ImageProduct.image4"><img src="~/img/products/ProductofUser/@depro.ImageProduct.image4" alt=""></a></div>
+                                        <div class="item"><a href="~/img/products/ProductofUser/@depro.ImageProduct.image5"><img src="~/img/products/ProductofUser/@depro.ImageProduct.image5" alt=""></a></div>
+                                    </div>
+                                </div>
+                            </figure>
+                            <div class="mk-product__variants" data-item="4" data-md="4" data-sm="4" data-arrow="false">
+                                <div class="item"><img src="~/img/products/ProductofUser/@depro.ImageProduct.image1" alt=""></div>
+                                <div class="item"><img src="~/img/products/ProductofUser/@depro.ImageProduct.image2" alt=""></div>
+                                <div class="item"><img src="~/img/products/ProductofUser/@depro.ImageProduct.image3" alt=""></div>
+                                <div class="item"><img src="~/img/products/ProductofUser/@depro.ImageProduct.image4" alt=""></div>
+                                <div class="item"><img src="~/img/products/ProductofUser/@depro.ImageProduct.image5" alt=""></div>
+                            </div>
+                        </div>
+                        <div class="mk-product__info">
+                            <h2>Marshall Kilburn Portable Wireless Speaker</h2>
+                            <p>Sold By:<a href="shop-default.html"><strong> Go Pro</strong></a></p>
+                            <h4 class="mk-product__price">Auction time: @depro.timestart @Content.getDate(depro.datestart.Value) - @depro.timeend @Content.getDate(depro.dateend.Value)</h4>
+                            <style>
+                                .countdowncd {
+                                    display: flex;
+                                }
+
+                                .countdowncd .timecd{
+                                    margin-right: 10px;
+                                    text-align: center;
+                                }
+                                .countdowncd .dongho {
+                                    text-align: center;
+                                    border: 3px solid #c0e3e8;
+                                    background-color: #d6f2f2;
+                                    padding-top: 10px;
+                                    width: 70px;
+                                    height: 80px;
+                                    font-size: 45px;
+                                }
+                                .twodot {
+                                    margin-right: 10px;
+                                    font-size: 45px;
+                                    padding-top: 10px;
+                                }
+                            </style>
+                            <!--//COUNTDOWN-->
+                            <div id="countdowncd" class="countdowncd">
+                                <div class="timecd">
+                                    <h2 id="daycd" class="dongho">00</h2>
+                                    <small>Days</small>
+                                </div>
+                                <h2 class="twodot">:</h2>
+                                <div class="timecd">
+                                    <h2 id="hourcd" class="dongho">00</h2>
+                                    <small>Hours</small>
+                                </div>
+                                <h2 class="twodot">:</h2>
+                                <div class="timecd">
+                                    <h2 id="minutecd" class="dongho">00</h2>
+                                    <small>Minutes</small>
+                                </div>
+                                <h2 class="twodot">:</h2>
+                                <div class="timecd">
+                                    <h2 id="secondcd" class="dongho">00</h2>
+                                    <small>Seconds</small>
+                                </div>
+                            </div>
+                            <style>
+                                .pricebuy {
+                                    background-color: ivory;
+                                    width: 100%;
+                                    height: 70px;
+                                    display: flex;
+                                    align-items: center;
+                                    padding-top: 2px;
+                                }
+                                .priceauction {
+                                    background-color: #f4f9ff;
+                                    width: 100%;
+                                    height: 170px;
+                                    margin-top: 20px;
+                                    padding-top: 15px;
+                                }
+                                .pricebuy small {
+                                    margin-left: 15px;
+                                    font-size: 20px;
+                                    font-weight: 600;
+                                    color: black;
+                                    font-family: fangsong;
+                                }
+                                .priceauction small {
+                                    margin-left: 15px;
+                                    font-size: 20px;
+                                    font-weight: 600;
+                                    color: black;
+                                    font-family: fangsong;
+                                    float: left;
+                                    margin-top: 7px;
+                                }
+                                .priceauction span {
+                                    color: orangered;
+                                    font-size: 27px;
+                                    float: right;
+                                    margin-right: 300px;
+                                }
+                                .pricebuy span {
+                                    color: orangered;
+                                    font-size: 27px;
+                                    margin-left: 44px;
+                                }
+                                .priceauction .inputauction input {
+                                    height: 50px;
+                                    width: 400px;
+                                    margin-right: 30px;
+                                    font-size: 18px;
+                                    padding-left: 10px;
+                                    margin: 5px 0px 0px 15px;
+                                    border: 1px solid #86bfe4;
+                                }
+                            </style>
+                            <div class="mk-product__shopping">
+                                <div class="pricebuy">
+                                    <small>Price Buy:</small>
+                                    <span>@depro.pricebuy <t style="font-size: 15px;font-family: fangsong;">VND</t></span>
+                                    <button style="width: 200px;font-size: 17px; height: 40px; margin-left: auto; margin-right: 100px; border-radius: 20px; background-color:#1f921f" class="btn btn-success"><i style=" font-size: 20px; margin-right: 12px;" class="fas fa-donate"></i>BUY NOW</button>                                    
+                                </div>
+                                <div class="priceauction">
+                                    <small>Price Now:</small> <span>@depro.priceauction <t style="font-size: 15px;font-family: fangsong;">VND</t> <t><img src="~/img/products/load2.gif" style="width: 100px;margin-left: -20px;margin-top: -5px;" /></t></span>
+                                    <div class="inputauction">
+                                        <input type="text" placeholder="Auction...." />
+                                        <button style="width: 60px; height: 50px; margin-top: -5px; background-color: #1e88e5" class="btn btn-primary"><i style=" font-size: 25px;" class="fas fa-gavel"></i></button>
+                                        <button style="width: 60px; height: 50px; margin-top: -5px; background-color: #1e88e5" class="btn btn-primary"><i style=" font-size: 25px;" class="fas fa-chart-bar"></i></button>
+                                        <button style="width: 60px; height: 50px; margin-top: -5px; background-color: #1e88e5" class="btn btn-primary"><i style=" font-size: 25px;" class="fas fa-cart-plus"></i></button>
+                                    </div>
+                                    <p style="margin-left: 15px"><i>*Hãy nhập giá bạn muốn đấu giá vào khung !</i></p>
+                                </div>                                                               
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mk-product__content mk-tab-root">
+                        <ul class="mk-tab-list">
+                            <li class="active"><a href="#tab-1">Description</a></li>
+                            <li><a href="#tab-2">Specification</a></li>
+                            <li><a href="#tab-3">Vendor</a></li>
+                            <li><a href="#tab-4">Reviews (1)</a></li>
+                            <li><a href="#tab-5">Questions and Answers</a></li>
+                            <li><a href="#tab-6">More Offers</a></li>
+                        </ul>
+                        <div class="mk-tabs">
+                            <div class="mk-tab active" id="tab-1">
+                                <div class="mk-document">
+                                    <p>@depro.descriptionpro</p>
+                                </div>
+                            </div>
+                            <div class="mk-tab" id="tab-2">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered mk-table mk-table--specification">
+                                        <tbody>
+                                            <tr>
+                                                <td>Color</td>
+                                                <td>@depro.DesciptionProduct.color</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Size</td>
+                                                <td>@depro.DesciptionProduct.size</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Material</td>
+                                                <td>@depro.DesciptionProduct.material</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Condition</td>
+                                                <td>@depro.DesciptionProduct.condition</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Origin</td>
+                                                <td>@depro.DesciptionProduct.origin</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Other</td>
+                                                <td>@depro.DesciptionProduct.other</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="mk-tab" id="tab-3">
+                                <p>Người bán: @depro.User.name</p>
+                                <p>Số điện thoại: @depro.User.phone</p>
+                                <p>Email: @depro.User.email</p>
+                                <p>Địa chỉ: @depro.User.address</p>
+                            </div>
+                            <div class="mk-tab" id="tab-4">
+                                <div class="row">
+                                    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12 ">
+                                        <div class="mk-block--average-rating">
+                                            <div class="mk-block__header">
+                                                <h3>4.00</h3>
+                                                <select class="mk-rating" data-read-only="true">
+                                                    <option value="1">1</option>
+                                                    <option value="1">2</option>
+                                                    <option value="1">3</option>
+                                                    <option value="1">4</option>
+                                                    <option value="2">5</option>
+                                                </select><span>1 Review</span>
+                                            </div>
+                                            <div class="mk-block__star">
+                                                <span>5 Star</span>
+                                                <div class="mk-progress" data-value="100"><span></span></div><span>100%</span>
+                                            </div>
+                                            <div class="mk-block__star">
+                                                <span>4 Star</span>
+                                                <div class="mk-progress" data-value="0"><span></span></div><span>0</span>
+                                            </div>
+                                            <div class="mk-block__star">
+                                                <span>3 Star</span>
+                                                <div class="mk-progress" data-value="0"><span></span></div><span>0</span>
+                                            </div>
+                                            <div class="mk-block__star">
+                                                <span>2 Star</span>
+                                                <div class="mk-progress" data-value="0"><span></span></div><span>0</span>
+                                            </div>
+                                            <div class="mk-block__star">
+                                                <span>1 Star</span>
+                                                <div class="mk-progress" data-value="0"><span></span></div><span>0</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12 ">
+                                        <form class="mk-form--review" action="http://marketkit.retailboosters.ng/index.html" method="get">
+                                            <h4>Submit Your Review</h4>
+                                            <p>Your email address will not be published. Required fields are marked<sup>*</sup></p>
+                                            <div class="form-group form-group__rating">
+                                                <label>Your rating of this product</label>
+                                                <select class="mk-rating" data-read-only="false">
+                                                    <option value="0">0</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <textarea class="form-control" rows="6" placeholder="Write your review here"></textarea>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12  ">
+                                                    <div class="form-group">
+                                                        <input class="form-control" type="text" placeholder="Your Name">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12  ">
+                                                    <div class="form-group">
+                                                        <input class="form-control" type="email" placeholder="Your Email">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group submit">
+                                                <button class="mk-btn">Submit Review</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mk-tab" id="tab-5">
+                                <div class="mk-block--questions-answers">
+                                    <h3>Questions and Answers</h3>
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" placeholder="Have a question? Search for answer?">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
