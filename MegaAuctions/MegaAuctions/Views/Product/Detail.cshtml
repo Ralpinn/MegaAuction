@@ -50,19 +50,21 @@
                                     display: flex;
                                 }
 
-                                .countdowncd .timecd{
-                                    margin-right: 10px;
-                                    text-align: center;
-                                }
-                                .countdowncd .dongho {
-                                    text-align: center;
-                                    border: 3px solid #c0e3e8;
-                                    background-color: #d6f2f2;
-                                    padding-top: 10px;
-                                    width: 70px;
-                                    height: 80px;
-                                    font-size: 45px;
-                                }
+                                    .countdowncd .timecd {
+                                        margin-right: 10px;
+                                        text-align: center;
+                                    }
+
+                                    .countdowncd .dongho {
+                                        text-align: center;
+                                        border: 3px solid #c0e3e8;
+                                        background-color: #d6f2f2;
+                                        padding-top: 10px;
+                                        width: 70px;
+                                        height: 80px;
+                                        font-size: 45px;
+                                    }
+
                                 .twodot {
                                     margin-right: 10px;
                                     font-size: 45px;
@@ -70,6 +72,7 @@
                                 }
                             </style>
                             <!--//COUNTDOWN-->
+                            <input id="ngayend" style="display: none" value="@Content.getDateTimeFormat(depro.dateend.Value, depro.timeend)" />
                             <div id="countdowncd" class="countdowncd">
                                 <div class="timecd">
                                     <h2 id="daycd" class="dongho">00</h2>
@@ -100,6 +103,7 @@
                                     align-items: center;
                                     padding-top: 2px;
                                 }
+
                                 .priceauction {
                                     background-color: #f4f9ff;
                                     width: 100%;
@@ -107,6 +111,7 @@
                                     margin-top: 20px;
                                     padding-top: 15px;
                                 }
+
                                 .pricebuy small {
                                     margin-left: 15px;
                                     font-size: 20px;
@@ -114,6 +119,7 @@
                                     color: black;
                                     font-family: fangsong;
                                 }
+
                                 .priceauction small {
                                     margin-left: 15px;
                                     font-size: 20px;
@@ -123,20 +129,23 @@
                                     float: left;
                                     margin-top: 7px;
                                 }
+
                                 .priceauction span {
                                     color: orangered;
                                     font-size: 27px;
                                     float: right;
-                                    margin-right: 300px;
+                                    margin-right: 185px;
                                 }
+
                                 .pricebuy span {
                                     color: orangered;
                                     font-size: 27px;
                                     margin-left: 44px;
                                 }
+
                                 .priceauction .inputauction input {
                                     height: 50px;
-                                    width: 400px;
+                                    width: 335px;
                                     margin-right: 30px;
                                     font-size: 18px;
                                     padding-left: 10px;
@@ -148,7 +157,7 @@
                                 <div class="pricebuy">
                                     <small>Price Buy:</small>
                                     <span>@depro.pricebuy <t style="font-size: 15px;font-family: fangsong;">VND</t></span>
-                                    <button style="width: 200px;font-size: 17px; height: 40px; margin-left: auto; margin-right: 100px; border-radius: 20px; background-color:#1f921f" class="btn btn-success"><i style=" font-size: 20px; margin-right: 12px;" class="fas fa-donate"></i>BUY NOW</button>                                    
+                                    <button style="width: 200px;font-size: 17px; height: 40px; margin-left: auto; margin-right: 50px; border-radius: 20px; background-color:#1f921f" class="btn btn-success"><i style=" font-size: 20px; margin-right: 12px;" class="fas fa-donate"></i>BUY NOW</button>
                                 </div>
                                 <div class="priceauction">
                                     <small>Price Now:</small> <span>@depro.priceauction <t style="font-size: 15px;font-family: fangsong;">VND</t> <t><img src="~/img/products/load2.gif" style="width: 100px;margin-left: -20px;margin-top: -5px;" /></t></span>
@@ -159,7 +168,7 @@
                                         <button style="width: 60px; height: 50px; margin-top: -5px; background-color: #1e88e5" class="btn btn-primary"><i style=" font-size: 25px;" class="fas fa-cart-plus"></i></button>
                                     </div>
                                     <p style="margin-left: 15px"><i>*Hãy nhập giá bạn muốn đấu giá vào khung !</i></p>
-                                </div>                                                               
+                                </div>
                             </div>
                         </div>
                     </div>

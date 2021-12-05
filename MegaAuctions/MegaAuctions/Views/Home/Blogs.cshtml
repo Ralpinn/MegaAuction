@@ -1,9 +1,571 @@
-﻿
+﻿@using MegaAuctions.Models;
 @{
     ViewBag.Title = "Blogs";
 }
 
 @*Hiển thị Blogs ở ngoài*@
+<!DOCTYPE HTML>
+<html lang="en">
+<!-- Mirrored from marketkit.retailboosters.ng/blog-small-thumb.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 11 Oct 2021 04:38:20 GMT -->
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>MarketKit - Multi Vendor &amp; Marketplace</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com/">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,800;1,200;1,300;1,400;1,600;1,700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="plugins/owl-carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="plugins/owl-carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="plugins/slick/slick/slick.css">
+    <link rel="stylesheet" href="plugins/nouislider/nouislider.min.css">
+    <link rel="stylesheet" href="plugins/lightGallery-master/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css">
+    <link rel="stylesheet" href="plugins/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
 
-<h2>Blogs</h2>
+<body>
+    <div class="mk-page--blog">
+        <div class="container">
+            <div class="mk-page__header">
+                <h1>Our Press</h1>
+                <div class="mk-breadcrumb--2">
+                    <ul class="breadcrumb">
+                        <li><a href="index-2.html">Home</a></li>
+                        <li>Our Press</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mk-blog--sidebar">
+                <div class="mk-blog__left">
+                    <div class="mk-post mk-post--small-thumbnail">
+                        <div class="mk-post__thumbnail">
+                            <a class="mk-post__overlay" href="~/Blog/DetailPost"></a><img src="~/img/blog/grid/1.jpg" alt="">
+                            <div class="mk-post__badge"><i class="icon-volume-high"></i></div>
+                        </div>
+                        <div class="mk-post__content">
+                            <div class="mk-post__top">
+                                <div class="mk-post__meta">
+                                    <a href="~/Blog/DetailPost">Entertaiment</a><a href="#">Technology</a>
+                                </div><a class="mk-post__title" href="~/Blog/DetailPost">Experience Great Sound With Beats’s Headphone</a>
+                                <p>Lorem imkum dolor sit amet, dolor siterim consectetur adipiscing elit. Phasellus duio faucibus est sed…</p>
+                            </div>
+                            <div class="mk-post__bottom">
+                                <p>September 17, 2021 by<a href="#"> drfurion</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mk-post mk-post--small-thumbnail">
+                        <div class="mk-post__thumbnail">
+                            <a class="mk-post__overlay" href="~/Blog/DetailPost"></a><img src="~/img/blog/grid/2.jpg" alt="">Th
+                        </div>
+                        <div class="mk-post__content">
+                            <div class="mk-post__top">
+                                <div class="mk-post__meta">
+                                    <a href="~/Blog/DetailPost">Life Style</a><a href="#">Others</a>
+                                </div><a class="mk-post__title" href="~/Blog/DetailPost">Products Necessery For Mom</a>
+                                <p>Lorem imkum dolor sit amet, dolor siterim consectetur adipiscing elit. Phasellus duio faucibus est sed…</p>
+                            </div>
+                            <div class="mk-post__bottom">
+                                <p>September 17, 2021 by<a href="#"> drfurion</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mk-post mk-post--small-thumbnail">
+                        <div class="mk-post__thumbnail">
+                            <a class="mk-post__overlay" href="~/Blog/DetailPost"></a><img src="~/img/blog/grid/3.jpg" alt="">
+                        </div>
+                        <div class="mk-post__content">
+                            <div class="mk-post__top">
+                                <div class="mk-post__meta">
+                                    <a href="~/Blog/DetailPost">Life Style</a><a href="#">Others</a>
+                                </div><a class="mk-post__title" href="~/Blog/DetailPost">Home Interior: Modern Style 2021</a>
+                                <p>Lorem imkum dolor sit amet, dolor siterim consectetur adipiscing elit. Phasellus duio faucibus est sed…</p>
+                            </div>
+                            <div class="mk-post__bottom">
+                                <p>September 17, 2021 by<a href="#"> drfurion</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mk-post mk-post--small-thumbnail">
+                        <div class="mk-post__thumbnail">
+                            <a class="mk-post__overlay" href="~/Blog/DetailPost"></a><img src="~/img/blog/grid/4.jpg" alt="">
+                            <div class="mk-post__badge"><i class="icon-picture"></i></div>
+                        </div>
+                        <div class="mk-post__content">
+                            <div class="mk-post__top">
+                                <div class="mk-post__meta">
+                                    <a href="~/Blog/DetailPost">Bussiness</a>
+                                </div><a class="mk-post__title" href="~/Blog/DetailPost">DeerCo – A New Look About Startup In Product Manufacture Field7</a>
+                                <p>Lorem imkum dolor sit amet, dolor siterim consectetur adipiscing elit. Phasellus duio faucibus est sed…</p>
+                            </div>
+                            <div class="mk-post__bottom">
+                                <p>September 17, 2021 by<a href="#"> drfurion</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mk-post mk-post--small-thumbnail">
+                        <div class="mk-post__thumbnail">
+                            <a class="mk-post__overlay" href="~/Blog/DetailPost"></a><img src="~/img/blog/grid/5.jpg" alt="">
+                            <div class="mk-post__badge"><i class="icon-camera-play"></i></div>
+                        </div>
+                        <div class="mk-post__content">
+                            <div class="mk-post__top">
+                                <div class="mk-post__meta">
+                                    <a href="~/Blog/DetailPost">Technology</a>
+                                </div><a class="mk-post__title" href="~/Blog/DetailPost">B&amp;O Play – Best Headphone For You</a>
+                                <p>Lorem imkum dolor sit amet, dolor siterim consectetur adipiscing elit. Phasellus duio faucibus est sed…</p>
+                            </div>
+                            <div class="mk-post__bottom">
+                                <p>September 17, 2021 by<a href="#"> drfurion</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mk-post mk-post--small-thumbnail">
+                        <div class="mk-post__thumbnail">
+                            <a class="mk-post__overlay" href="~/Blog/DetailPost"></a><img src="~/img/blog/grid/6.jpg" alt="">
+                        </div>
+                        <div class="mk-post__content">
+                            <div class="mk-post__top">
+                                <div class="mk-post__meta">
+                                    <a href="~/Blog/DetailPost">Businesses</a><a href="#">Life Style</a>
+                                </div><a class="mk-post__title" href="~/Blog/DetailPost">Unique Products For Your Kitchen From IKEA Design</a>
+                                <p>Lorem imkum dolor sit amet, dolor siterim consectetur adipiscing elit. Phasellus duio faucibus est sed…</p>
+                            </div>
+                            <div class="mk-post__bottom">
+                                <p>September 17, 2021 by<a href="#"> drfurion</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mk-pagination">
+                        <ul class="pagination">
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">Next Page<i class="icon-chevron-right"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mk-blog__right">
+                    <aside class="widget widget--blog widget--search">
+                        <form class="mk-form--widget-search" action="http://marketkit.retailboosters.ng/do_action" method="get">
+                            <input class="form-control" type="text" placeholder="Search...">
+                            <button><i class="icon-magnifier"></i></button>
+                        </form>
+                    </aside>
+                    <aside class="widget widget--blog widget--categories">
+                        <h3 class="widget__title">Categories</h3>
+                        <div class="widget__content">
+                            <ul>
+                                <li><a href="blog-grid.html">Business</a></li>
+                                <li><a href="blog-grid.html">Entertaiment</a></li>
+                                <li><a href="blog-grid.html">Fashion</a></li>
+                                <li><a href="blog-grid.html">Life style</a></li>
+                                <li><a href="blog-grid.html">Others</a></li>
+                                <li><a href="blog-grid.html">Technology</a></li>
+                            </ul>
+                        </div>
+                    </aside>
+                    <aside class="widget widget--blog widget--recent-post">
+                        <h3 class="widget__title">Recent Posts</h3>
+                        <div class="widget__content"><a href="blog-detail.html">Harman Kadon Onyx Studio Mini, Reviews & Experiences</a><a href="blog-detail.html">Experience Great Sound With Beats’s Headphone</a><a href="blog-detail.html">Products Necessery For Mom</a><a href="blog-detail.html">Home Interior: Modern Style 2021</a><a href="blog-detail.html">DeerCo – A New Look About Startup In Product Manufacture Field</a></div>
+                    </aside>
+                    <aside class="widget widget--blog widget--recent-comments">
+                        <h3 class="widget__title">Recent Comments</h3>
+                        <div class="widget__content">
+                            <p><a class="author" href="#">drfurion</a> on<a href="#"> Dashboard</a></p>
+                            <p><a class="author" href="#">logan</a> on<a href="#"> Rayban Rounded Sunglass Brown Color</a></p>
+                            <p><a class="author" href="#">logan</a> on<a href="#"> Sound Intone I65 Earphone White Version</a></p>
+                            <p><a class="author" href="#">logan</a> on<a href="#"> Sleeve Linen Blend Caro Pane Shirt</a></p>
+                        </div>
+                    </aside>
+                    <aside class="widget widget--blog widget--tags">
+                        <h3 class="widget__title">Popular Tags</h3>
+                        <div class="widget__content"><a href="#">Business</a><a href="#">Clothing</a><a href="#">Design</a><a href="#">Entertaiment</a><a href="#">Fashion</a><a href="#">Internet</a><a href="#">Life Style</a><a href="#">Marketing</a><a href="#">Music</a></div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="mk-filter--sidebar">
+        <div class="mk-filter__header">
+            <h3>Filter Products</h3><a class="mk-btn--close mk-btn--no-boder" href="#"></a>
+        </div>
+        <div class="mk-filter__content">
+            <aside class="widget widget_shop">
+                <h4 class="widget-title">Categories</h4>
+                <ul class="mk-list--categories">
+                    <li class="menu-item-has-children">
+                        <a href="shop-default.html">Clothing &amp; Apparel</a><span class="sub-toggle"><i class="fa fa-angle-down"></i></span>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="shop-default.html">Womens</a>
+                            </li>
+                            <li>
+                                <a href="shop-default.html">Mens</a>
+                            </li>
+                            <li>
+                                <a href="shop-default.html">Bags</a>
+                            </li>
+                            <li>
+                                <a href="shop-default.html">Sunglasses</a>
+                            </li>
+                            <li>
+                                <a href="shop-default.html">Accessories</a>
+                            </li>
+                            <li>
+                                <a href="shop-default.html">Kid's Fashion</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="shop-default.html">Garden &amp; Kitchen</a><span class="sub-toggle"><i class="fa fa-angle-down"></i></span>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="shop-default.html">Cookware</a>
+                            </li>
+                            <li>
+                                <a href="shop-default.html">Decoration</a>
+                            </li>
+                            <li>
+                                <a href="shop-default.html">Furniture</a>
+                            </li>
+                            <li>
+                                <a href="shop-default.html">Garden Tools</a>
+                            </li>
+                            <li>
+                                <a href="shop-default.html">Home Improvement</a>
+                            </li>
+                            <li>
+                                <a href="shop-default.html">Powers And Hand Tools</a>
+                            </li>
+                            <li>
+                                <a href="shop-default.html">Utensil &amp; Gadget</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="shop-default.html">Consumer Electrics</a><span class="sub-toggle"><i class="fa fa-angle-down"></i></span>
+                        <ul class="sub-menu">
+                            <li class="menu-item-has-children">
+                                <a href="shop-default.html">Air Conditioners</a><span class="sub-toggle"><i class="fa fa-angle-down"></i></span>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="shop-default.html">Accessories</a>
+                                    </li>
+                                    <li>
+                                        <a href="shop-default.html">Type Hanging Cell</a>
+                                    </li>
+                                    <li>
+                                        <a href="shop-default.html">Type Hanging Wall</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="shop-default.html">Audios &amp; Theaters</a><span class="sub-toggle"><i class="fa fa-angle-down"></i></span>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="shop-default.html">Headphone</a>
+                                    </li>
+                                    <li>
+                                        <a href="shop-default.html">Home Theater System</a>
+                                    </li>
+                                    <li>
+                                        <a href="shop-default.html">Speakers</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="shop-default.html">Car Electronics</a><span class="sub-toggle"><i class="fa fa-angle-down"></i></span>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="shop-default.html">Audio &amp; Video</a>
+                                    </li>
+                                    <li>
+                                        <a href="shop-default.html">Car Security</a>
+                                    </li>
+                                    <li>
+                                        <a href="shop-default.html">Radar Detector</a>
+                                    </li>
+                                    <li>
+                                        <a href="shop-default.html">Vehicle Gmk</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="shop-default.html">Office Electronics</a><span class="sub-toggle"><i class="fa fa-angle-down"></i></span>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="shop-default.html">Printers</a>
+                                    </li>
+                                    <li>
+                                        <a href="shop-default.html">Projectors</a>
+                                    </li>
+                                    <li>
+                                        <a href="shop-default.html">Scanners</a>
+                                    </li>
+                                    <li>
+                                        <a href="shop-default.html">Store &amp; Business</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="shop-default.html">TV Televisions</a><span class="sub-toggle"><i class="fa fa-angle-down"></i></span>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="shop-default.html">4K Ultra HD TVs</a>
+                                    </li>
+                                    <li>
+                                        <a href="shop-default.html">LED TVs</a>
+                                    </li>
+                                    <li>
+                                        <a href="shop-default.html">OLED TVs</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="shop-default.html">Washing Machines</a><span class="sub-toggle"><i class="fa fa-angle-down"></i></span>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="shop-default.html">Type Drying Clothes</a>
+                                    </li>
+                                    <li>
+                                        <a href="shop-default.html">Type Horizontal</a>
+                                    </li>
+                                    <li>
+                                        <a href="shop-default.html">Type Vertical</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="shop-default.html">Refrigerators</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="shop-default.html">Health &amp; Beauty</a><span class="sub-toggle"><i class="fa fa-angle-down"></i></span>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="shop-default.html">Equipments</a>
+                            </li>
+                            <li>
+                                <a href="shop-default.html">Hair Care</a>
+                            </li>
+                            <li>
+                                <a href="shop-default.html">Perfumer</a>
+                            </li>
+                            <li>
+                                <a href="shop-default.html">Skin Care</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="shop-default.html">Computers &amp; Technologies</a><span class="sub-toggle"><i class="fa fa-angle-down"></i></span>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="shop-default.html">Desktop PC</a>
+                            </li>
+                            <li>
+                                <a href="shop-default.html">Laptop</a>
+                            </li>
+                            <li>
+                                <a href="shop-default.html">Smartphones</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="shop-default.html">Jewelry &amp; Watches</a><span class="sub-toggle"><i class="fa fa-angle-down"></i></span>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="shop-default.html">Gemstone Jewelry</a>
+                            </li>
+                            <li>
+                                <a href="shop-default.html">Men's Watches</a>
+                            </li>
+                            <li>
+                                <a href="shop-default.html">Women's Watches</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="shop-default.html">Phones &amp; Accessories</a><span class="sub-toggle"><i class="fa fa-angle-down"></i></span>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="shop-default.html">Iphone 8</a>
+                            </li>
+                            <li>
+                                <a href="shop-default.html">Iphone X</a>
+                            </li>
+                            <li>
+                                <a href="shop-default.html">Sam Sung Note 8</a>
+                            </li>
+                            <li>
+                                <a href="shop-default.html">Sam Sung S8</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="shop-default.html">Sport &amp; Outdoor</a><span class="sub-toggle"><i class="fa fa-angle-down"></i></span>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="shop-default.html">Freezer Burn</a>
+                            </li>
+                            <li>
+                                <a href="shop-default.html">Fridge Cooler</a>
+                            </li>
+                            <li>
+                                <a href="shop-default.html">Wine Cabinets</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="shop-default.html">Babies &amp; Moms</a>
+                    </li>
+                    <li>
+                        <a href="shop-default.html">Books &amp; Office</a>
+                    </li>
+                    <li>
+                        <a href="shop-default.html">Cars &amp; Motocycles</a>
+                    </li>
+                </ul>
+            </aside>
+            <aside class="widget widget_shop">
+                <h4 class="widget-title">BY BRANDS</h4>
+                <form class="mk-form--widget-search" action="http://marketkit.retailboosters.ng/do_action" method="get">
+                    <input class="form-control" type="text" placeholder="">
+                    <button><i class="icon-magnifier"></i></button>
+                </form>
+                <figure class="mk-custom-scrollbar" data-height="250">
+                    <div class="mk-checkbox">
+                        <input class="form-control" type="checkbox" id="brand-1" name="brand">
+                        <label for="brand-1">Adidas (3)</label>
+                    </div>
+                    <div class="mk-checkbox">
+                        <input class="form-control" type="checkbox" id="brand-2" name="brand">
+                        <label for="brand-2">Amcrest (1)</label>
+                    </div>
+                    <div class="mk-checkbox">
+                        <input class="form-control" type="checkbox" id="brand-3" name="brand">
+                        <label for="brand-3">Apple (2)</label>
+                    </div>
+                    <div class="mk-checkbox">
+                        <input class="form-control" type="checkbox" id="brand-4" name="brand">
+                        <label for="brand-4">Asus (19)</label>
+                    </div>
+                    <div class="mk-checkbox">
+                        <input class="form-control" type="checkbox" id="brand-5" name="brand">
+                        <label for="brand-5">Baxtex (20)</label>
+                    </div>
+                    <div class="mk-checkbox">
+                        <input class="form-control" type="checkbox" id="brand-6" name="brand">
+                        <label for="brand-6">Adidas (11)</label>
+                    </div>
+                    <div class="mk-checkbox">
+                        <input class="form-control" type="checkbox" id="brand-7" name="brand">
+                        <label for="brand-7">Casio (9)</label>
+                    </div>
+                    <div class="mk-checkbox">
+                        <input class="form-control" type="checkbox" id="brand-8" name="brand">
+                        <label for="brand-8">Electrolux (0)</label>
+                    </div>
+                    <div class="mk-checkbox">
+                        <input class="form-control" type="checkbox" id="brand-9" name="brand">
+                        <label for="brand-9">Gallaxy (0)</label>
+                    </div>
+                    <div class="mk-checkbox">
+                        <input class="form-control" type="checkbox" id="brand-10" name="brand">
+                        <label for="brand-10">Samsung (0)</label>
+                    </div>
+                    <div class="mk-checkbox">
+                        <input class="form-control" type="checkbox" id="brand-11" name="brand">
+                        <label for="brand-11">Sony (0)</label>
+                    </div>
+                </figure>
+                <figure>
+                    <h4 class="widget-title">By Price</h4>
+                    <div class="mk-slider" data-default-min="13" data-default-max="1300" data-max="1311" data-step="100" data-unit="$"></div>
+                    <p class="mk-slider__meta">Price:<span class="mk-slider__value mk-slider__min"></span>-<span class="mk-slider__value mk-slider__max"></span></p>
+                </figure>
+                <figure>
+                    <h4 class="widget-title">By Price</h4>
+                    <div class="mk-checkbox">
+                        <input class="form-control" type="checkbox" id="review-1" name="review">
+                        <label for="review-1"><span><i class="fa fa-star rate"></i><i class="fa fa-star rate"></i><i class="fa fa-star rate"></i><i class="fa fa-star rate"></i><i class="fa fa-star rate"></i></span><small>(13)</small></label>
+                    </div>
+                    <div class="mk-checkbox">
+                        <input class="form-control" type="checkbox" id="review-2" name="review">
+                        <label for="review-2"><span><i class="fa fa-star rate"></i><i class="fa fa-star rate"></i><i class="fa fa-star rate"></i><i class="fa fa-star rate"></i><i class="fa fa-star"></i></span><small>(13)</small></label>
+                    </div>
+                    <div class="mk-checkbox">
+                        <input class="form-control" type="checkbox" id="review-3" name="review">
+                        <label for="review-3"><span><i class="fa fa-star rate"></i><i class="fa fa-star rate"></i><i class="fa fa-star rate"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span><small>(5)</small></label>
+                    </div>
+                    <div class="mk-checkbox">
+                        <input class="form-control" type="checkbox" id="review-4" name="review">
+                        <label for="review-4"><span><i class="fa fa-star rate"></i><i class="fa fa-star rate"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span><small>(5)</small></label>
+                    </div>
+                    <div class="mk-checkbox">
+                        <input class="form-control" type="checkbox" id="review-5" name="review">
+                        <label for="review-5"><span><i class="fa fa-star rate"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span><small>(1)</small></label>
+                    </div>
+                </figure>
+                <figure>
+                    <h4 class="widget-title">By Color</h4>
+                    <div class="mk-checkbox mk-checkbox--color color-1 mk-checkbox--inline">
+                        <input class="form-control" type="checkbox" id="color-1" name="size">
+                        <label for="color-1"></label>
+                    </div>
+                    <div class="mk-checkbox mk-checkbox--color color-2 mk-checkbox--inline">
+                        <input class="form-control" type="checkbox" id="color-2" name="size">
+                        <label for="color-2"></label>
+                    </div>
+                    <div class="mk-checkbox mk-checkbox--color color-3 mk-checkbox--inline">
+                        <input class="form-control" type="checkbox" id="color-3" name="size">
+                        <label for="color-3"></label>
+                    </div>
+                    <div class="mk-checkbox mk-checkbox--color color-4 mk-checkbox--inline">
+                        <input class="form-control" type="checkbox" id="color-4" name="size">
+                        <label for="color-4"></label>
+                    </div>
+                    <div class="mk-checkbox mk-checkbox--color color-5 mk-checkbox--inline">
+                        <input class="form-control" type="checkbox" id="color-5" name="size">
+                        <label for="color-5"></label>
+                    </div>
+                </figure>
+                <figure class="sizes">
+                    <h4 class="widget-title">BY SIZE</h4><a href="#">L</a><a href="#">M</a><a href="#">S</a><a href="#">XL</a>
+                </figure>
+            </aside>
+        </div>
+    </div>
+    <!--************SCRIPT************-->
+    <script src="plugins/jquery.min.js"></script>
+    <script src="plugins/nouislider/nouislider.min.js"></script>
+    <script src="../cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+    <script src="plugins/owl-carousel/owl.carousel.min.js"></script>
+    <script src="../cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/js/bootstrap.min.js"></script>
+    <script src="plugins/imagesloaded.pkgd.min.js"></script>
+    <script src="plugins/masonry.pkgd.min.js"></script>
+    <script src="plugins/isotope.pkgd.min.js"></script>
+    <script src="plugins/jquery.matchHeight-min.js"></script>
+    <script src="plugins/slick/slick/slick.min.js"></script>
+    <script src="../cdnjs.cloudflare.com/ajax/libs/jquery-bar-rating/1.2.2/jquery.barrating.min.js"></script>
+    <script src="plugins/slick-animation.min.js"></script>
+    <script src="plugins/lightGallery-master/dist/js/lightgallery-all.min.js"></script>
+    <script src="plugins/sticky-sidebar/dist/sticky-sidebar.min.js"></script>
+    <script src="plugins/select2/dist/js/select2.full.min.js"></script>
+
+    <!-- custom scripts-->
+    <script src="js/main.js"></script>
+</body>
+
+
+<!-- Mirrored from marketkit.retailboosters.ng/blog-small-thumb.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 11 Oct 2021 04:38:20 GMT -->
+</html>

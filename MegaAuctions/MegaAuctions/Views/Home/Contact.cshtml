@@ -1,19 +1,142 @@
-﻿@{
-    ViewBag.Title = "Contact";
-}
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="fontawesome-free-5.6.3-web/css/all.css" />
+    <!-- Our Custom CSS style sheet -->
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Contact us - DCompany</title>
+</head>
+<!-- xs<576 | 576<sm<768 | 768<md<992 | 992<lg<1200 | 1200<xl -->
 
-@*Viết Code trang Contact*@
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
-
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
-
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<body>
+    
+    <!-- 2nd section -->
+    <section class="p-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3 class="text-center">
+                        Chúng tôi không chỉ là một nền tảng công nghệ đấu giá
+                    </h3>
+                </div>
+                <div class="col-md-8">
+                    <h4 class="text-center" style="color: darkgrey">
+                        Chúng tôi là một đội ngũ chuyên gia với nhiều thập kỷ kinh nghiệm
+                        trong thế giới đấu giá và công nghệ thời gian thực.
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="p-3" style="background-color: #007bff">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="text-center" style="color:aliceblue;">
+                        Điền vào biểu mẫu dưới đây để nhận liên hệ trong vòng 24 giờ
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </section>
+    <style>
+        .form-control::placeholder {
+            color: black;
+        }
+    </style>
+    <!-- 3rd section -->
+    <section class="form-section p-5">
+        <div class="container">
+            <div class="row">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <form action="">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6" style="border: 0.5px solid black; color: black">
+                                        <input type="text"
+                                               class="form-control"
+                                               placeholder="Họ tên *" />
+                                    </div>
+                                    <div class="form-group col-md-6" style="border: 0.5px solid black; color: black">
+                                        <input type="text"
+                                               class="form-control"
+                                               placeholder="Email *" />
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6" style="border: 0.5px solid black; color: black">
+                                        <input type="text"
+                                               class="form-control"
+                                               placeholder="Số điện thoại " />
+                                    </div>
+                                    <div class="form-group col-md-6" style="border: 0.5px solid black; color: black">
+                                        <select class="form-control" name="" id="">
+                                            <option value="VietNam">VietNam</option>
+                                            <option value="France">France</option>
+                                            <option value="USA">USA</option>
+                                            <option value="Campuchia">Campuchia</option>
+                                            <option value="Singapore">Singapore</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12" style="border: 0.5px solid black; color: black">
+                                        <input type="text"
+                                               class="form-control"
+                                               placeholder="Tiêu đề " />
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12" style="border: 0.5px solid black; color: black">
+                                        <textarea class="form-control" rows="3"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12 text-center">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="fas fa-paper-plane"></i> Send Message
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-6 address">
+                            <h5>Điện thoại / WhatsApp</h5>
+                            <p>
+                                <a href="tel:+840888821939"><i class="fas fa-phone"></i> +(84) 0888821939 </a><br />
+                            </p>
+                            <h5>Email / Website</h5>
+                            <p>
+                                <a href="mailto:megabid@gmail.com"><i class="fas fa-envelope"></i> megabid.com</a><br />
+                                <a href="https://dev.tech/">
+                                    <i class="fas fa-globe"></i> www.dev.tech
+                                </a>
+                            </p>
+                            <h5>Thời gian làm việc</h5>
+                            <p>Mon - Fri : 9am - 6pm(IST)</p>
+                            <h5>Address</h5>
+                            <p>
+                                <i class="fas fa-city" style="color: dodgerblue"></i> 155,Sư
+                                Vạn Hạnh,quận 10,HoChiMinh City
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="bootstrap/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="bootstrap/js/popper.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

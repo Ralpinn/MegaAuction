@@ -1,6 +1,7 @@
 ﻿@using MegaAuctions.Models;
 @{
     ViewBag.Title = "Home Page";
+    List<Product> listproduct = ViewBag.ListPro;
     string statuslogin = Content.StatusLogin;
 }
 <style>
@@ -48,7 +49,7 @@
                     <h4>Version 2021</h4>
                     <h3>50% discount</h3>
                     <p>New Version 2021 with many powerful features.</p>
-                    <p><strong>Faster, Friction better & Cheap Price</strong></p><a class="mk-btn" href="#">Shop Now</a>
+                    <p><strong>Faster, Friction better & Cheap Price</strong></p><a class="mk-btn" href="#">Auctions</a>
                 </div>
             </div>
             <div class="mk-banner--autopart" data-background="~/img/slider/home-1/2.jpg">
@@ -73,245 +74,33 @@
             </div>
             <div class="mk-section__content">
                 <div class="mk-carousel--nav owl-slider" data-owl-auto="false" data-owl-loop="false" data-owl-speed="10000" data-owl-gap="30" data-owl-nav="true" data-owl-dots="true" data-owl-item="7" data-owl-item-xs="2" data-owl-item-sm="3" data-owl-item-md="4" data-owl-item-lg="5" data-owl-item-xl="6" data-owl-duration="1000" data-owl-mousedrag="on">
-                    <div class="mk-product mk-product--inner">
-                        <div class="mk-product__thumbnail">
-                            <a href="product-default.html"><img src="~/img/products/home/1.png" alt=""></a>
-                            <ul class="mk-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="mk-product__container">
-
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">
-                                    Plastma TV set
-                                </a>
-                                <p class="mk-product__price sale">$567.99 <del>$670.00 </del></p>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>01</span>
+                    @foreach (var pro in listproduct)
+                    {
+                        <div class="mk-product">
+                            <div class="mk-product__thumbnail">
+                                <a href="~/Home/DetailPro/@pro.idproduct"><img src="~/img/products/ProductofUser/@pro.ImageProduct.image1" height="190px" alt=""></a>
+                                <ul class="mk-product__actions">
+                                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
+                                    <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="mk-product__container">
+                                <a class="mk-product__vendor">Sold by: @pro.User.name</a>
+                                <div class="mk-product__content">
+                                    <a class="mk-product__title" href="product-default.html">@pro.namepro</a>
+                                    <div class="mk-product__rating">
+                                        <p class="mk-product__price sale" style="color: red"><i class="fas fa-gavel" style="margin-right: 5px"></i> @pro.priceauction vnđ</p>
+                                    </div>
+                                </div>
+                                <div class="mk-product__content hover">
+                                    <a class="mk-product__title">Time End: @pro.timeend @Content.getDate(pro.dateend.Value)</a>
+                                    <p class="mk-product__price sale" style="color: red">Buy: @pro.pricebuy vnđ</p>
                                 </div>
                             </div>
                         </div>
-
-                    </div>
-                    <div class="mk-product mk-product--inner">
-                        <div class="mk-product__thumbnail">
-                            <a href="product-default.html"><img src="~/img/products/home/2.png" alt=""></a>
-                            <ul class="mk-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="mk-product__container">
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">
-                                    Phone
-                                </a>
-                                <p class="mk-product__price">$101.99<small>18% off</small></p>
-
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>01</span>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="mk-addto__cart">Add to Cart</div>
-                    </div>
-                    <div class="mk-product mk-product--inner">
-                        <div class="mk-product__thumbnail">
-                            <a href="product-default.html"><img src="~/img/products/home/3.png" alt=""></a>
-                            <ul class="mk-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="mk-product__container">
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">
-                                    Appliances
-                                </a>
-                                <p class="mk-product__price sale">$42.00 <del>$60.00 </del><small>18% off</small></p>
-
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>02</span>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="mk-addto__cart">Add to Cart</div>
-                    </div>
-                    <div class="mk-product mk-product--inner">
-                        <div class="mk-product__thumbnail">
-                            <a href="product-default.html"><img src="~/img/products/home/4.png" alt=""></a>
-                            <ul class="mk-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="mk-product__container">
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">
-                                    Photo & Video
-                                </a>
-                                <p class="mk-product__price">$320.00<small>18% off</small></p>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>01</span>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mk-product mk-product--inner">
-                        <div class="mk-product__thumbnail">
-                            <a href="product-default.html"><img src="~/img/products/home/5.png" alt=""></a>
-                            <ul class="mk-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="mk-product__container">
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">
-                                    Gaming consoles
-                                </a>
-                                <p class="mk-product__price">$85.00<small>18% off</small></p>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>01</span>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mk-product mk-product--inner">
-                        <div class="mk-product__thumbnail">
-                            <a href="product-default.html"><img src="~/img/products/home/6.png" alt=""></a>
-                            <ul class="mk-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="mk-product__container">
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">
-                                    Air conditioning
-                                </a>
-                                <p class="mk-product__price">$92.00<small>18% off</small></p>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>01</span>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mk-product mk-product--inner">
-                        <div class="mk-product__thumbnail">
-                            <a href="product-default.html"><img src="~/img/products/home/7.png" alt=""></a>
-                            <ul class="mk-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="mk-product__container">
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">
-                                    Audio
-                                </a>
-                                <p class="mk-product__price sale">$42.00 <del>$60.00 </del><small>18% off</small></p>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>02</span>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mk-product mk-product--inner">
-                        <div class="mk-product__thumbnail">
-                            <a href="product-default.html"><img src="~/img/products/home/8.png" alt=""></a>
-
-                            <ul class="mk-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="mk-product__container">
-
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">
-                                    Portable Electronics
-                                </a>
-                                <p class="mk-product__price sale">$42.00 <del>$60.00 </del><small>18% off</small></p>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>02</span>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
+                    }
                 </div>
             </div>
         </div>
@@ -427,317 +216,33 @@
             </div>
             <div class="mk-section__content">
                 <div class="mk-carousel--nav owl-slider" data-owl-auto="false" data-owl-loop="false" data-owl-speed="10000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="7" data-owl-item-xs="2" data-owl-item-sm="2" data-owl-item-md="3" data-owl-item-lg="4" data-owl-item-xl="6" data-owl-duration="1000" data-owl-mousedrag="on">
-                    <div class="mk-product">
-                        <div class="mk-product__thumbnail">
-                            <a href="product-default.html"><img src="~/img/products/electronic/1.jpg" alt=""></a>
-                            <ul class="mk-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="mk-product__container">
-                            <a class="mk-product__vendor" href="#">Go Pro</a>
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">Marshall Kilburn Portable Wireless</a>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>01</span>
+                    @for (int i = listproduct.Count - 1; i > 0; i--)
+                    {
+                        <div class="mk-product">
+                            <div class="mk-product__thumbnail">
+                                <a href="product-default.html"><img src="~/img/products/ProductofUser/@listproduct[i].ImageProduct.image1" height="190px" alt=""></a>
+                                <ul class="mk-product__actions">
+                                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
+                                    <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="mk-product__container">
+                                <a class="mk-product__vendor">Sold by: @listproduct[i].User.name</a>
+                                <div class="mk-product__content">
+                                    <a class="mk-product__title" href="product-default.html">@listproduct[i].namepro</a>
+                                    <div class="mk-product__rating">
+                                        <p class="mk-product__price sale"><i class="fas fa-gavel" style="margin-right: 5px"></i> @listproduct[i].priceauction vnđ</p>
+                                    </div>
                                 </div>
-                                <p class="mk-product__price sale">$567.99 <del>$670.00 </del></p>
-                            </div>
-                            <div class="mk-product__content hover">
-                                <a class="mk-product__title" href="product-default.html">Marshall Kilburn Portable Wireless</a>
-                                <p class="mk-product__price sale">$567.99 <del>$670.00 </del></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mk-product">
-                        <div class="mk-product__thumbnail">
-                            <a href="product-default.html"><img src="~/img/products/electronic/2.jpg" alt=""></a>
-                            <ul class="mk-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="mk-product__container">
-                            <a class="mk-product__vendor" href="#">Global Office</a>
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">Xbox One Wireless Controller Black Color</a>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>01</span>
+                                <div class="mk-product__content hover">
+                                    <a class="mk-product__title">Time End: @listproduct[i].timeend @Content.getDate(listproduct[i].dateend.Value)</a>
+                                    <p class="mk-product__price sale">Buy: @listproduct[i].pricebuy vnđ</p>
                                 </div>
-                                <p class="mk-product__price">$101.99</p>
-                            </div>
-                            <div class="mk-product__content hover">
-                                <a class="mk-product__title" href="product-default.html">Xbox One Wireless Controller Black Color</a>
-                                <p class="mk-product__price">$101.99</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="mk-product">
-                        <div class="mk-product__thumbnail">
-                            <a href="product-default.html"><img src="~/img/products/electronic/3.jpg" alt=""></a>
-                            <ul class="mk-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="mk-product__container">
-                            <a class="mk-product__vendor" href="#">Young Shop</a>
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">Sound Intone I65 Earphone White Version</a>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>02</span>
-                                </div>
-                                <p class="mk-product__price sale">$42.00 <del>$60.00 </del></p>
-                            </div>
-                            <div class="mk-product__content hover">
-                                <a class="mk-product__title" href="product-default.html">Sound Intone I65 Earphone White Version</a>
-                                <p class="mk-product__price sale">$42.00 <del>$60.00 </del></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mk-product">
-                        <div class="mk-product__thumbnail">
-                            <a href="product-default.html"><img src="~/img/products/electronic/4.jpg" alt=""></a>
-                            <ul class="mk-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="mk-product__container">
-                            <a class="mk-product__vendor" href="#">Global Office</a>
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">Samsung Gear VR Virtual Reality Headset</a>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>01</span>
-                                </div>
-                                <p class="mk-product__price">$320.00</p>
-                            </div>
-                            <div class="mk-product__content hover">
-                                <a class="mk-product__title" href="product-default.html">Samsung Gear VR Virtual Reality Headset</a>
-                                <p class="mk-product__price">$320.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mk-product">
-                        <div class="mk-product__thumbnail">
-                            <a href="product-default.html"><img src="~/img/products/electronic/5.jpg" alt=""></a>
-                            <ul class="mk-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="mk-product__container">
-                            <a class="mk-product__vendor" href="#">Global Office</a>
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">Samsung UHD TV 24inch</a>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>01</span>
-                                </div>
-                                <p class="mk-product__price">$85.00</p>
-                            </div>
-                            <div class="mk-product__content hover">
-                                <a class="mk-product__title" href="product-default.html">Samsung UHD TV 24inch</a>
-                                <p class="mk-product__price">$85.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mk-product">
-                        <div class="mk-product__thumbnail">
-                            <a href="product-default.html"><img src="~/img/products/electronic/6.jpg" alt=""></a>
-                            <ul class="mk-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="mk-product__container">
-                            <a class="mk-product__vendor" href="#">Global Store</a>
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">EmkION Plaster Printer</a>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>01</span>
-                                </div>
-                                <p class="mk-product__price">$92.00</p>
-                            </div>
-                            <div class="mk-product__content hover">
-                                <a class="mk-product__title" href="product-default.html">EmkION Plaster Printer</a>
-                                <p class="mk-product__price">$92.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mk-product">
-                        <div class="mk-product__thumbnail">
-                            <a href="product-default.html"><img src="~/img/products/electronic/7.jpg" alt=""></a>
-
-                            <ul class="mk-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="mk-product__container">
-                            <a class="mk-product__vendor" href="#">Young Shop</a>
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">LG White Front Load Steam Washer</a>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>02</span>
-                                </div>
-                                <p class="mk-product__price sale">$42.00 <del>$60.00 </del></p>
-                            </div>
-                            <div class="mk-product__content hover">
-                                <a class="mk-product__title" href="product-default.html">LG White Front Load Steam Washer</a>
-                                <p class="mk-product__price sale">$42.00 <del>$60.00 </del></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mk-product">
-                        <div class="mk-product__thumbnail">
-                            <a href="product-default.html"><img src="~/img/products/electronic/8.jpg" alt=""></a>
-                            <ul class="mk-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="mk-product__container">
-                            <a class="mk-product__vendor" href="#">Go Pro</a>
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">Edifier Powered Bookshelf Speakers</a>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>02</span>
-                                </div>
-                                <p class="mk-product__price">$42.00</p>
-                            </div>
-                            <div class="mk-product__content hover">
-                                <a class="mk-product__title" href="product-default.html">Edifier Powered Bookshelf Speakers</a>
-                                <p class="mk-product__price">$42.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mk-product">
-                        <div class="mk-product__thumbnail">
-                            <a href="product-default.html"><img src="~/img/products/electronic/9.jpg" alt=""></a>
-                            <ul class="mk-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="mk-product__container">
-                            <a class="mk-product__vendor" href="#">Go Pro</a>
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">Amcrest Security Camera in White Color</a>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>02</span>
-                                </div>
-                                <p class="mk-product__price">$42.00</p>
-                            </div>
-                            <div class="mk-product__content hover">
-                                <a class="mk-product__title" href="product-default.html">Amcrest Security Camera in White Color</a>
-                                <p class="mk-product__price">$42.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mk-product">
-                        <div class="mk-product__thumbnail">
-                            <a href="product-default.html"><img src="~/img/products/electronic/10.jpg" alt=""></a>
-                            <ul class="mk-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="mk-product__container">
-                            <a class="mk-product__vendor" href="#">Go Pro</a>
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">Amcrest Security Camera in White Color</a>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>02</span>
-                                </div>
-                                <p class="mk-product__price">$42.00</p>
-                            </div>
-                            <div class="mk-product__content hover">
-                                <a class="mk-product__title" href="product-default.html">Amcrest Security Camera in White Color</a>
-                                <p class="mk-product__price">$42.00</p>
-                            </div>
-                        </div>
-                    </div>
+                    }
                 </div>
             </div>
         </div>
@@ -756,224 +261,33 @@
             </div>
             <div class="mk-section__content">
                 <div class="mk-carousel--responsive owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="10000" data-owl-gap="0" data-owl-nav="false" data-owl-dots="true" data-owl-item="7" data-owl-item-xs="2" data-owl-item-sm="2" data-owl-item-md="2" data-owl-item-lg="4" data-owl-item-xl="6" data-owl-duration="1000" data-owl-mousedrag="on">
-                    <div class="mk-product">
-                        <div class="mk-product__thumbnail">
-                            <a href="product-default.html"><img src="~/img/products/clothing/1.jpg" alt=""></a>
-                            <ul class="mk-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="mk-product__container">
-                            <a class="mk-product__vendor" href="#">Young Shop</a>
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">Herschel Leather Duffle Bag In Brown Color</a>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>01</span>
+                    @foreach (var pro in listproduct)
+                    {
+                        <div class="mk-product">
+                            <div class="mk-product__thumbnail">
+                                <a href="~/Home/DetailPro/@pro.idproduct"><img src="~/img/products/ProductofUser/@pro.ImageProduct.image1" height="190px" alt=""></a>
+                                <ul class="mk-product__actions">
+                                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
+                                    <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="mk-product__container">
+                                <a class="mk-product__vendor">Sold by: @pro.User.name</a>
+                                <div class="mk-product__content">
+                                    <a class="mk-product__title" href="product-default.html">@pro.namepro</a>
+                                    <div class="mk-product__rating">
+                                        <p class="mk-product__price sale"><i class="fas fa-gavel" style="margin-right: 5px"></i> @pro.priceauction vnđ</p>
+                                    </div>
                                 </div>
-                                <p class="mk-product__price sale">$567.99 <del>$670.00 </del></p>
-                            </div>
-                            <div class="mk-product__content hover">
-                                <a class="mk-product__title" href="product-default.html">Herschel Leather Duffle Bag In Brown Color</a>
-                                <p class="mk-product__price sale">$567.99 <del>$670.00 </del></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mk-product">
-                        <div class="mk-product__thumbnail">
-                            <a href="product-default.html"><img src="~/img/products/clothing/2.jpg" alt=""></a>
-                            <ul class="mk-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="mk-product__container">
-                            <a class="mk-product__vendor" href="#">Global Office</a>
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">Unero Military Classical Backpack</a>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>01</span>
+                                <div class="mk-product__content hover">
+                                    <a class="mk-product__title">Time End: @pro.timeend @Content.getDate(pro.dateend.Value)</a>
+                                    <p class="mk-product__price sale">Buy: @pro.pricebuy vnđ</p>
                                 </div>
-                                <p class="mk-product__price">$101.99</p>
-                            </div>
-                            <div class="mk-product__content hover">
-                                <a class="mk-product__title" href="product-default.html">Unero Military Classical Backpack</a>
-                                <p class="mk-product__price">$101.99</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="mk-product">
-                        <div class="mk-product__thumbnail">
-                            <a href="product-default.html"><img src="~/img/products/clothing/3.jpg" alt=""></a>
-                            <ul class="mk-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="mk-product__container">
-                            <a class="mk-product__vendor" href="#">Young Shop</a>
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">Rayban Rounded Sunglass Brown Color</a>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>02</span>
-                                </div>
-                                <p class="mk-product__price sale">$42.00 <del>$60.00 </del></p>
-                            </div>
-                            <div class="mk-product__content hover">
-                                <a class="mk-product__title" href="product-default.html">Rayban Rounded Sunglass Brown Color</a>
-                                <p class="mk-product__price sale">$42.00 <del>$60.00 </del></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mk-product">
-                        <div class="mk-product__thumbnail">
-                            <a href="product-default.html"><img src="~/img/products/clothing/4.jpg" alt=""></a>
-                            <ul class="mk-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="mk-product__container">
-                            <a class="mk-product__vendor" href="#">Global Office</a>
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">Sleeve Linen Blend Caro Pane Shirt</a>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>01</span>
-                                </div>
-                                <p class="mk-product__price">$320.00</p>
-                            </div>
-                            <div class="mk-product__content hover">
-                                <a class="mk-product__title" href="product-default.html">Sleeve Linen Blend Caro Pane Shirt</a>
-                                <p class="mk-product__price">$320.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mk-product">
-                        <div class="mk-product__thumbnail">
-                            <a href="product-default.html"><img src="~/img/products/clothing/5.jpg" alt=""></a>
-                            <ul class="mk-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="mk-product__container">
-                            <a class="mk-product__vendor" href="#">Global Office</a>
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">Men’s Sports Runnning Swim Board Shorts</a>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>01</span>
-                                </div>
-                                <p class="mk-product__price">$85.00</p>
-                            </div>
-                            <div class="mk-product__content hover">
-                                <a class="mk-product__title" href="product-default.html">Men’s Sports Runnning Swim Board Shorts</a>
-                                <p class="mk-product__price">$85.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mk-product">
-                        <div class="mk-product__thumbnail">
-                            <a href="product-default.html"><img src="~/img/products/clothing/6.jpg" alt=""></a>
-                            <ul class="mk-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="mk-product__container">
-                            <a class="mk-product__vendor" href="#">Global Store</a>
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">Paul’s Smith Sneaker InWhite Color</a>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>01</span>
-                                </div>
-                                <p class="mk-product__price">$92.00</p>
-                            </div>
-                            <div class="mk-product__content hover">
-                                <a class="mk-product__title" href="product-default.html">Paul’s Smith Sneaker InWhite Color</a>
-                                <p class="mk-product__price">$92.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mk-product">
-                        <div class="mk-product__thumbnail">
-                            <a href="product-default.html"><img src="~/img/products/clothing/7.jpg" alt=""></a>
-
-                            <ul class="mk-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="mk-product__container">
-                            <a class="mk-product__vendor" href="#">Young Shop</a>
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">MVMTH Classical Leather Watch In Black</a>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>02</span>
-                                </div>
-                                <p class="mk-product__price sale">$42.00 <del>$60.00 </del></p>
-                            </div>
-                            <div class="mk-product__content hover">
-                                <a class="mk-product__title" href="product-default.html">MVMTH Classical Leather Watch In Black</a>
-                                <p class="mk-product__price sale">$42.00 <del>$60.00 </del></p>
-                            </div>
-                        </div>
-                    </div>
+                    }
                 </div>
             </div>
         </div>
@@ -992,396 +306,35 @@
             </div>
             <div class="mk-section__content">
                 <div class="mk-carousel--responsive owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="10000" data-owl-gap="0" data-owl-nav="false" data-owl-dots="true" data-owl-item="7" data-owl-item-xs="2" data-owl-item-sm="2" data-owl-item-md="3" data-owl-item-lg="4" data-owl-item-xl="6" data-owl-duration="1000" data-owl-mousedrag="on">
-                    <div class="mk-product">
-                        <div class="mk-product__thumbnail">
-                            <a href="product-default.html"><img src="~/img/products/home/1.jpg" alt=""></a>
-                            <ul class="mk-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="mk-product__container">
-                            <a class="mk-product__vendor" href="#">Young Shop</a>
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">Korea Long Sofa Fabric In Blue Navy Color</a>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>01</span>
+                    @for (int i = listproduct.Count - 1; i > 0; i--)
+                    {
+                        <div class="mk-product">
+                            <div class="mk-product__thumbnail">
+                                <a href="product-default.html"><img src="~/img/products/ProductofUser/@listproduct[i].ImageProduct.image1" height="190px" alt=""></a>
+                                <ul class="mk-product__actions">
+                                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
+                                    <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="mk-product__container">
+                                <a class="mk-product__vendor">Sold by: @listproduct[i].User.name</a>
+                                <div class="mk-product__content">
+                                    <a class="mk-product__title" href="product-default.html">@listproduct[i].namepro</a>
+                                    <div class="mk-product__rating">
+                                        <p class="mk-product__price sale"><i class="fas fa-gavel" style="margin-right: 5px"></i> @listproduct[i].priceauction vnđ</p>
+                                    </div>
                                 </div>
-                                <p class="mk-product__price sale">$567.99 <del>$670.00 </del></p>
-                            </div>
-                            <div class="mk-product__content hover">
-                                <a class="mk-product__title" href="product-default.html">Korea Long Sofa Fabric In Blue Navy Color</a>
-                                <p class="mk-product__price sale">$567.99 <del>$670.00 </del></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mk-product">
-                        <div class="mk-product__thumbnail">
-                            <a href="product-default.html"><img src="~/img/products/home/2.jpg" alt=""></a>
-                            <ul class="mk-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="mk-product__container">
-                            <a class="mk-product__vendor" href="#">Global Office</a>
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">Aroma Rice Cooker</a>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>01</span>
+                                <div class="mk-product__content hover">
+                                    <a class="mk-product__title">Time End: @listproduct[i].timeend @Content.getDate(listproduct[i].dateend.Value)</a>
+                                    <p class="mk-product__price sale">Buy: @listproduct[i].pricebuy vnđ</p>
                                 </div>
-                                <p class="mk-product__price">$101.99</p>
-                            </div>
-                            <div class="mk-product__content hover">
-                                <a class="mk-product__title" href="product-default.html">Aroma Rice Cooker</a>
-                                <p class="mk-product__price">$101.99</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="mk-product">
-                        <div class="mk-product__thumbnail">
-                            <a href="product-default.html"><img src="~/img/products/home/3.jpg" alt=""></a>
-                            <ul class="mk-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="mk-product__container">
-                            <a class="mk-product__vendor" href="#">Young Shop</a>
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">Simple Plastice Chair In White Color</a>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>02</span>
-                                </div>
-                                <p class="mk-product__price sale">$42.00 <del>$60.00 </del></p>
-                            </div>
-                            <div class="mk-product__content hover">
-                                <a class="mk-product__title" href="product-default.html">Simple Plastice Chair In White Color</a>
-                                <p class="mk-product__price sale">$42.00 <del>$60.00 </del></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mk-product">
-                        <div class="mk-product__thumbnail">
-                            <a href="product-default.html"><img src="~/img/products/home/4.jpg" alt=""></a>
-                            <ul class="mk-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="mk-product__container">
-                            <a class="mk-product__vendor" href="#">Global Office</a>
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">Korea Fabric Chair In Brown Colorr</a>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>01</span>
-                                </div>
-                                <p class="mk-product__price">$320.00</p>
-                            </div>
-                            <div class="mk-product__content hover">
-                                <a class="mk-product__title" href="product-default.html">Korea Fabric Chair In Brown Colorr</a>
-                                <p class="mk-product__price">$320.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mk-product">
-                        <div class="mk-product__thumbnail">
-                            <a href="product-default.html"><img src="~/img/products/home/5.jpg" alt=""></a>
-                            <ul class="mk-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="mk-product__container">
-                            <a class="mk-product__vendor" href="#">Global Office</a>
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">Set 14-Piece Knife From KichiKit</a>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>01</span>
-                                </div>
-                                <p class="mk-product__price">$85.00</p>
-                            </div>
-                            <div class="mk-product__content hover">
-                                <a class="mk-product__title" href="product-default.html">Set 14-Piece Knife From KichiKit</a>
-                                <p class="mk-product__price">$85.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mk-product">
-                        <div class="mk-product__thumbnail">
-                            <a href="product-default.html"><img src="~/img/products/home/6.jpg" alt=""></a>
-                            <ul class="mk-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="mk-product__container">
-                            <a class="mk-product__vendor" href="#">Global Store</a>
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">Magic Bullet NutriBullet Pro 900 Series Blender</a>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>01</span>
-                                </div>
-                                <p class="mk-product__price">$92.00</p>
-                            </div>
-                            <div class="mk-product__content hover">
-                                <a class="mk-product__title" href="product-default.html">Magic Bullet NutriBullet Pro 900 Series Blender</a>
-                                <p class="mk-product__price">$92.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mk-product">
-                        <div class="mk-product__thumbnail">
-                            <a href="product-default.html"><img src="~/img/products/home/7.jpg" alt=""></a>
-
-                            <ul class="mk-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="mk-product__container">
-                            <a class="mk-product__vendor" href="#">Young Shop</a>
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">Letter Printed Cushion Cover Cotton</a>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>02</span>
-                                </div>
-                                <p class="mk-product__price sale">$42.00 <del>$60.00 </del></p>
-                            </div>
-                            <div class="mk-product__content hover">
-                                <a class="mk-product__title" href="product-default.html">Letter Printed Cushion Cover Cotton</a>
-                                <p class="mk-product__price sale">$42.00 <del>$60.00 </del></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mk-product">
-                        <div class="mk-product__thumbnail">
-                            <a href="product-default.html"><img src="~/img/products/home/7.jpg" alt=""></a>
-
-                            <ul class="mk-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="mk-product__container">
-                            <a class="mk-product__vendor" href="#">Young Shop</a>
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">Letter Printed Cushion Cover Cotton</a>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>02</span>
-                                </div>
-                                <p class="mk-product__price sale">$42.00 <del>$60.00 </del></p>
-                            </div>
-                            <div class="mk-product__content hover">
-                                <a class="mk-product__title" href="product-default.html">Letter Printed Cushion Cover Cotton</a>
-                                <p class="mk-product__price sale">$42.00 <del>$60.00 </del></p>
-                            </div>
-                        </div>
-                    </div>
+                    }
                 </div>
             </div>
         </div>
-    </div>
-
-
-    <div class="mk-product-list mk-new-arrivals mt-40">
-        <div class="mk-container">
-            <div class="mk-section__header">
-                <h3>Hot New Arrivals</h3>
-                <ul class="mk-section__links">
-                    <li><a href="shop-grid.html">Technologies</a></li>
-                    <li><a href="shop-grid.html">Electronic</a></li>
-                    <li><a href="shop-grid.html">Furnitures</a></li>
-                    <li><a href="shop-grid.html">Clothing & Apparel</a></li>
-                    <li><a href="shop-grid.html">Health & Beauty</a></li>
-                    <li><a href="shop-grid.html">View All</a></li>
-                </ul>
-            </div>
-            <div class="mk-section__content">
-                <div class="row">
-                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 ">
-                        <div class="mk-product--horizontal">
-                            <div class="mk-product__thumbnail"><a href="product-default.html"><img src="~/img/products/arrivals/1.jpg" alt=""></a></div>
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">Apple iPhone Retina 6s Plus 32GB</a>
-                                <p class="mk-product__price">$990.50</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 ">
-                        <div class="mk-product--horizontal">
-                            <div class="mk-product__thumbnail"><a href="product-default.html"><img src="~/img/products/arrivals/1.jpg" alt=""></a></div>
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">Apple iPhone Retina 6s Plus 64GB</a>
-                                <p class="mk-product__price">$1120.50</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 ">
-                        <div class="mk-product--horizontal">
-                            <div class="mk-product__thumbnail"><a href="product-default.html"><img src="~/img/products/arrivals/1.jpg" alt=""></a></div>
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">Apple iPhone Retina 6s Plus 128GB</a>
-                                <p class="mk-product__price">$1220.50</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 ">
-                        <div class="mk-product--horizontal">
-                            <div class="mk-product__thumbnail"><a href="product-default.html"><img src="~/img/products/arrivals/2.jpg" alt=""></a></div>
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">Marshall Kilburn Portable Wireless Speaker</a>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>01</span>
-                                </div>
-                                <p class="mk-product__price">$36.78 – $56.99</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 ">
-                        <div class="mk-product--horizontal">
-                            <div class="mk-product__thumbnail"><a href="product-default.html"><img src="~/img/products/arrivals/3.jpg" alt=""></a></div>
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">Herschel Leather Duffle Bag In Brown Color</a>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>02</span>
-                                </div>
-                                <p class="mk-product__price">$125.30</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 ">
-                        <div class="mk-product--horizontal">
-                            <div class="mk-product__thumbnail"><a href="product-default.html"><img src="~/img/products/arrivals/4.jpg" alt=""></a></div>
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">Xbox One Wireless Controller Black Color</a>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>02</span>
-                                </div>
-                                <p class="mk-product__price">$55.30</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 ">
-                        <div class="mk-product--horizontal">
-                            <div class="mk-product__thumbnail"><a href="product-default.html"><img src="~/img/products/arrivals/5.jpg" alt=""></a></div>
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">Grand Slam Indoor Of Show Jumping Novel</a>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>02</span>
-                                </div>
-                                <p class="mk-product__price sale">$41.27 <del>$52.99 </del></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 ">
-                        <div class="mk-product--horizontal">
-                            <div class="mk-product__thumbnail"><a href="product-default.html"><img src="~/img/products/arrivals/6.jpg" alt=""></a></div>
-                            <div class="mk-product__content">
-                                <a class="mk-product__title" href="product-default.html">Sound Intone I65 Earphone White Version</a>
-                                <div class="mk-product__rating">
-                                    <select class="mk-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select><span>01</span>
-                                </div>
-                                <p class="mk-product__price sale">$41.27 <del>$62.39 </del></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    </div>    
 </div>

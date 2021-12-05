@@ -26,5 +26,13 @@ namespace MegaAuctions.Models
             return new string(Enumerable.Repeat(chars, length)
               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
+
+        public static string getDateTimeFormat(DateTime date, String time) 
+        {
+            string day = date.Day.ToString();
+            string mon = date.Month.ToString();
+            string year = date.Year.ToString();
+            return mon + "/" + day + "/" + year + " " + time + ":00";
+        }
     }
 }

@@ -1,9 +1,8 @@
-﻿const date = new Date("11/20/21 12:00:00");
-
+﻿var ngayend = document.getElementById("ngayend").value;     //12/25/2021 00:00:00
+const date = new Date(ngayend);
 function updatecountdown() {
     const datenow = new Date();
     const diff = date - datenow;
-
     const d = Math.floor(diff / 1000 / 60 / 60 / 24);
     const h = Math.floor(diff / 1000 / 60 / 60) % 24;
     const m = Math.floor(diff / 1000 / 60) % 60;

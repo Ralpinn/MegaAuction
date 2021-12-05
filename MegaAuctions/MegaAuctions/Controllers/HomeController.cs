@@ -11,10 +11,12 @@ namespace MegaAuctions.Controllers
     public class HomeController : Controller
     {
         HomeModel homemodel = new HomeModel();
-        static User userinfo = null;     
+        ProductModel productmodel = new ProductModel();
+        static User userinfo = null;
         public ActionResult Index()
         {
             MegaAuctions.Models.Content.userinformation = userinfo;
+            ViewBag.ListPro = productmodel.ListProduct();
             return View(userinfo);
         }
 
@@ -68,13 +70,21 @@ namespace MegaAuctions.Controllers
         //AUCTIONS
         public ActionResult Auctions() 
         {
-            return View();
+            ViewBag.ListPro = productmodel.ListProduct();
+            ViewBag.ListTypePro = productmodel.ListTypeProduct();
+            return View(userinfo);
         }
 
+        //DETAIL PRODUCT
+        public ActionResult DetailPro(int id) 
+        {
+            ViewBag.DetailProduct = productmodel.OneProduct(id);
+            return View(userinfo);
+        }
         //Blog
         public ActionResult Blogs()
         {
-            return View();
+            return View(userinfo);
         }
     }
 }
