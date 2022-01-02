@@ -1,0 +1,97 @@
+﻿@using MegaAuctions.Models;
+@{
+    ViewBag.Title = "EditInfo";
+}
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>EditInfo</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <style>
+        form .form002 input, form .form002 select{
+            font-size: 16px;
+        }
+        .form002{
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container mt-3" style="font-size: 18px;">
+        <h1 style="margin-top: 20px" class="text-center">Cập nhật thông tin cá nhân</h1>
+        <form>
+            <div class="form002" style="width: 49%" ;>
+                <label for="IDuser">ID User: </label>
+                <input type="text" readonly name="idUser" value="@Model.idUser" class="form-control">
+            </div>
+            <div class="form002" style="width: 49%; float: right;">
+                <label for="NgaySinh">Ngày sinh: </label>
+                <input type="text" name="born" value="@Model.born.Month/@Model.born.Day/@Model.born.Year" class="form-control">
+            </div>
+            <div class="form002" style="width: 49%;">
+                <label for="HoTen">Họ tên: </label>
+                <input type="text" name="name" value="@Model.name" class="form-control">
+            </div>
+
+            <div class="form002" style="width: 49%; float: right;">
+                <label for="GioiTinh">Giới tính: : </label>
+                <select class="form-select form-control" aria-label=".form-select-sm example" name="gender">
+                    @if (Model.gender == "Nam")
+                    {
+                        <option>Nam</option>
+                        <option>Nữ</option>
+                        <option>Khác</option>
+                    }
+                    else if (Model.gender == "Nữ")
+                    {
+                        <option>Nữ</option>
+                        <option>Nam</option>
+                        <option>Khác</option>
+                    }
+                    else
+                    {
+                        <option>Khác</option>
+                        <option>Nam</option>
+                        <option>Nữ</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form002" style="width: 49%;">
+                <label for="DiaChi">Địa chỉ: </label>
+                <input type="text" name="address" value="@Model.address" class="form-control">
+            </div>
+
+            <div class="form002" style="width: 49%; float: right;">
+                <label for="Email">Email: </label>
+                <input type="text" name="email" value="@Model.email" class="form-control">
+            </div>
+
+            <div class="form002" style="width: 49%;">
+                <label for="Sdt">Số điện thoại: </label>
+                <input type="tel" name="phone" value="@Model.phone" class="form-control">
+            </div>
+            <div class="form002" style="width: 49%;">
+                <label for="MatKhau">Mật khẩu: </label>
+                <input type="tel" name="password" value="@Model.password" class="form-control">
+            </div>
+            <br />
+            <input type="submit" value="Save" class="btn btn-primary" style=" width: 100px;height: 40px;font-size: 15px;"><br />
+            <br />
+            <div>
+                @Html.ActionLink("Back to Home", "Index")
+            </div>
+        </form>
+    </div>
+}
+}
+

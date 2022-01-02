@@ -13,7 +13,6 @@
     <Property Name="idUser" Type="Int32" />
     <Property Name="idproduct" Type="Int32" />
     <NavigationProperty Name="Product" Relationship="Self.FK_Auction_Product" FromRole="Auction" ToRole="Product" />
-    <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Auction" FromRole="Auction" ToRole="Order" />
   </EntityType>
   <EntityType Name="Blog">
     <Key>
@@ -68,15 +67,38 @@
     <Property Name="image5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Products" Relationship="Self.FK_Product_ImageProduct" FromRole="ImageProduct" ToRole="Product" />
   </EntityType>
-  <EntityType Name="Order">
+  <EntityType Name="Notification">
     <Key>
-      <PropertyRef Name="idorder" />
+      <PropertyRef Name="idNotif" />
     </Key>
-    <Property Name="idorder" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="dateorder" Type="DateTime" Precision="3" />
-    <Property Name="timeorder" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="idauction" Type="Int32" />
-    <NavigationProperty Name="Auction" Relationship="Self.FK_Order_Auction" FromRole="Order" ToRole="Auction" />
+    <Property Name="idNotif" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="titleN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="contentN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="dateN" Type="DateTime" Precision="3" />
+    <Property Name="statusNotif" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="idproduct" Type="Int32" />
+    <Property Name="idUser" Type="Int32" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_Notification_Product" FromRole="Notification" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="idpay" />
+    </Key>
+    <Property Name="idpay" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="method" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="currency" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="date" Type="DateTime" Precision="3" />
+    <Property Name="price" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="tax" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ship" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="namecontact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="phonecontact" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="addresscontact" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="subtotal" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="quantity" Type="Int32" />
+    <Property Name="idproduct" Type="Int32" />
+    <Property Name="idUser" Type="Int32" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_Payments_Product" FromRole="Payments" ToRole="Product" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
@@ -99,6 +121,8 @@
     <NavigationProperty Name="Auctions" Relationship="Self.FK_Auction_Product" FromRole="Product" ToRole="Auction" />
     <NavigationProperty Name="DesciptionProduct" Relationship="Self.FK_Product_DesciptionProduct" FromRole="Product" ToRole="DesciptionProduct" />
     <NavigationProperty Name="ImageProduct" Relationship="Self.FK_Product_ImageProduct" FromRole="Product" ToRole="ImageProduct" />
+    <NavigationProperty Name="Notifications" Relationship="Self.FK_Notification_Product" FromRole="Product" ToRole="Notification" />
+    <NavigationProperty Name="Payments" Relationship="Self.FK_Payments_Product" FromRole="Product" ToRole="Payments" />
     <NavigationProperty Name="TypeProduct" Relationship="Self.FK_Product_TypeProduct" FromRole="Product" ToRole="TypeProduct" />
     <NavigationProperty Name="User" Relationship="Self.FK_Product_User" FromRole="Product" ToRole="User" />
     <NavigationProperty Name="Reviews" Relationship="Self.FK_Reviews_Product" FromRole="Product" ToRole="Reviews" />
@@ -194,18 +218,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Order_Auction">
-    <End Role="Auction" Type="Self.Auction" Multiplicity="0..1" />
-    <End Role="Order" Type="Self.Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Auction">
-        <PropertyRef Name="idauction" />
-      </Principal>
-      <Dependent Role="Order">
-        <PropertyRef Name="idauction" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Blog_TypeBlog">
     <End Role="TypeBlog" Type="Self.TypeBlog" Multiplicity="0..1" />
     <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
@@ -263,6 +275,30 @@
       </Principal>
       <Dependent Role="Product">
         <PropertyRef Name="idimgpro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notification_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="idproduct" />
+      </Principal>
+      <Dependent Role="Notification">
+        <PropertyRef Name="idproduct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payments_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="Payments" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="idproduct" />
+      </Principal>
+      <Dependent Role="Payments">
+        <PropertyRef Name="idproduct" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -332,7 +368,8 @@
     <EntitySet Name="Chats" EntityType="Self.Chat" />
     <EntitySet Name="DesciptionProducts" EntityType="Self.DesciptionProduct" />
     <EntitySet Name="ImageProducts" EntityType="Self.ImageProduct" />
-    <EntitySet Name="Orders" EntityType="Self.Order" />
+    <EntitySet Name="Notifications" EntityType="Self.Notification" />
+    <EntitySet Name="Payments" EntityType="Self.Payment" />
     <EntitySet Name="Products" EntityType="Self.Product" />
     <EntitySet Name="Reviews" EntityType="Self.Review" />
     <EntitySet Name="Roles" EntityType="Self.Role" />
@@ -344,10 +381,6 @@
     <AssociationSet Name="FK_Auction_Product" Association="Self.FK_Auction_Product">
       <End Role="Product" EntitySet="Products" />
       <End Role="Auction" EntitySet="Auctions" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Order_Auction" Association="Self.FK_Order_Auction">
-      <End Role="Auction" EntitySet="Auctions" />
-      <End Role="Order" EntitySet="Orders" />
     </AssociationSet>
     <AssociationSet Name="FK_Blog_TypeBlog" Association="Self.FK_Blog_TypeBlog">
       <End Role="TypeBlog" EntitySet="TypeBlogs" />
@@ -368,6 +401,14 @@
     <AssociationSet Name="FK_Product_ImageProduct" Association="Self.FK_Product_ImageProduct">
       <End Role="ImageProduct" EntitySet="ImageProducts" />
       <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notification_Product" Association="Self.FK_Notification_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Notification" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payments_Product" Association="Self.FK_Payments_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Payments" EntitySet="Payments" />
     </AssociationSet>
     <AssociationSet Name="FK_Product_TypeProduct" Association="Self.FK_Product_TypeProduct">
       <End Role="TypeProduct" EntitySet="TypeProducts" />

@@ -15,7 +15,7 @@ namespace MegaAuctions.Models
             return db.Products.ToList();
         }
         public IEnumerable<TypeProduct> ListTypeProduct()
-        {
+        { 
             return db.TypeProducts.ToList();
         }
         public Product OneProduct(int id)
@@ -71,7 +71,9 @@ namespace MegaAuctions.Models
                 db.SaveChanges();
             }
             catch
-            {                               
+            {
+                try
+                {
                     des.color = despro.color;
                     des.size = despro.size;
                     des.origin = despro.origin;
@@ -95,7 +97,27 @@ namespace MegaAuctions.Models
                     p.iddespro = des.iddespro;
                     p.idUser = Content.userinformation.idUser;
                     db.Products.Add(p);
-                    db.SaveChanges();               
+                    db.SaveChanges();
+                }
+                catch
+                {
+                    p.namepro = pro.namepro;
+                    p.descriptionpro = pro.descriptionpro;
+                    p.priceauction = pro.priceauction;
+                    p.pricebuy = pro.pricebuy;
+                    p.datestart = pro.datestart;
+                    p.dateend = pro.dateend;
+                    p.timestart = pro.timestart;
+                    p.timeend = pro.timeend;
+                    p.statuspro = "Action";
+                    string[] idtype = typepro.nametp.Split('.');
+                    p.idtypepro = int.Parse(idtype[0]);
+                    p.idimgpro = img.idimgpro;
+                    p.iddespro = des.iddespro;
+                    p.idUser = Content.userinformation.idUser;
+                    db.Products.Add(p);
+                    db.SaveChanges();
+                }                   
             }
                         
         }
@@ -107,6 +129,12 @@ namespace MegaAuctions.Models
             db.Products.Remove(pro);
             db.ImageProducts.Remove(imgpr);
             db.DesciptionProducts.Remove(despro);
+            db.SaveChanges();
+        }
+        public void EditEndStatusPro(int idpro) 
+        {
+            Product pro = OneProduct(idpro);
+            pro.statuspro = "End";
             db.SaveChanges();
         }
     }

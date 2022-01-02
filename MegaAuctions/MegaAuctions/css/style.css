@@ -8419,7 +8419,6 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 .mk-product .mk-product__content.hover {
   display: block;
   position: absolute;
-  top: 100%;
   right: -1px;
   width: calc(100% + 2px);
   padding: 0 5px 20px;
@@ -11645,15 +11644,16 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 }
 
 .mk-cart--mini .mk-cart__content {
-  position: absolute;
-  min-width: 370px;
-  right: -30px;
-  z-index: 30;
-  padding-top: 10px;
-  transform: translate(0 20px);
-  transition: all .4s ease;
-  visibility: hidden;
-  opacity: 0;
+    position: absolute;
+    min-width: 400px;
+    right: -30px;
+    z-index: 30;
+    padding-top: 10px;
+    transform: translate(0 20px);
+    transition: all .4s ease;
+    visibility: hidden;
+    opacity: 0;
+    box-shadow: 1px 1px 5px #413d3d;
 }
 
 .mk-cart--mini .mk-cart__footer {

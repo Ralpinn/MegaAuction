@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'E:\Nam_4\6.Thuong_Mai_Dien_Tu\MegaAuctions\MegaAuctions\Models\DBEModel.edmx'. 
+﻿// T4 code generation is enabled for model 'E:\Nam_4\6.Thuong_Mai_Dien_Tu\MetaBid\Auction-System-ASP.NET-MVC-main\MegaAuctions\MegaAuctions\Models\DBEModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

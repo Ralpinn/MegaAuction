@@ -30,7 +30,8 @@ namespace MegaAuctions.Models
         public virtual DbSet<Chat> Chats { get; set; }
         public virtual DbSet<DesciptionProduct> DesciptionProducts { get; set; }
         public virtual DbSet<ImageProduct> ImageProducts { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<Notification> Notifications { get; set; }
+        public virtual DbSet<Payment> Payments { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Review> Reviews { get; set; }
         public virtual DbSet<Role> Roles { get; set; }

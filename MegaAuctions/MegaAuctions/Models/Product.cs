@@ -20,6 +20,8 @@ namespace MegaAuctions.Models
         public Product()
         {
             this.Auctions = new HashSet<Auction>();
+            this.Notifications = new HashSet<Notification>();
+            this.Payments = new HashSet<Payment>();
             this.Reviews = new HashSet<Review>();
         }
     
@@ -39,12 +41,16 @@ namespace MegaAuctions.Models
         public Nullable<int> idUser { get; set; }
 
         [NotMapped]
-        public HttpPostedFileBase[] upfiles { get; set; } 
+        public HttpPostedFileBase[] upfiles { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Auction> Auctions { get; set; }
         public virtual DesciptionProduct DesciptionProduct { get; set; }
         public virtual ImageProduct ImageProduct { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Notification> Notifications { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Payment> Payments { get; set; }
         public virtual TypeProduct TypeProduct { get; set; }
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

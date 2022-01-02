@@ -42,8 +42,8 @@
                             </div>
                         </div>
                         <div class="mk-product__info">
-                            <h2>Marshall Kilburn Portable Wireless Speaker</h2>
-                            <p>Sold By:<a href="shop-default.html"><strong> Go Pro</strong></a></p>
+                            <h2 style="font-size: 30px; font-weight: 600;">@depro.namepro</h2>
+                            <p>Sold By:<a href="shop-default.html"><strong> @depro.User.name</strong></a></p>
                             <h4 class="mk-product__price">Auction time: @depro.timestart @Content.getDate(depro.datestart.Value) - @depro.timeend @Content.getDate(depro.dateend.Value)</h4>
                             <style>
                                 .countdowncd {
@@ -57,12 +57,14 @@
 
                                     .countdowncd .dongho {
                                         text-align: center;
-                                        border: 3px solid #c0e3e8;
-                                        background-color: #d6f2f2;
-                                        padding-top: 10px;
+                                        border: 3px solid #f4f9ff;
+                                        background-color: #f4f9ff;
+                                        box-shadow: 2px 5px 5px;
+                                        padding-top: 4px;
                                         width: 70px;
                                         height: 80px;
                                         font-size: 45px;
+                                        color: #156614;
                                     }
 
                                 .twodot {
@@ -96,7 +98,7 @@
                             </div>
                             <style>
                                 .pricebuy {
-                                    background-color: ivory;
+                                    background-color: #f4f9ff;
                                     width: 100%;
                                     height: 70px;
                                     display: flex;
@@ -141,6 +143,7 @@
                                     color: orangered;
                                     font-size: 27px;
                                     margin-left: 44px;
+                                    margin-left: auto;
                                 }
 
                                 .priceauction .inputauction input {
@@ -162,24 +165,23 @@
                                 <div class="priceauction">
                                     <small>Price Now:</small> <span>@depro.priceauction <t style="font-size: 15px;font-family: fangsong;">VND</t> <t><img src="~/img/products/load2.gif" style="width: 100px;margin-left: -20px;margin-top: -5px;" /></t></span>
                                     <div class="inputauction">
-                                        <input type="text" placeholder="Auction...." />
+                                        <input onChange="format_curency(this)" onkeypress="return isNumberKey(event)" type="text" placeholder="Auction...." />
                                         <button style="width: 60px; height: 50px; margin-top: -5px; background-color: #1e88e5" class="btn btn-primary"><i style=" font-size: 25px;" class="fas fa-gavel"></i></button>
                                         <button style="width: 60px; height: 50px; margin-top: -5px; background-color: #1e88e5" class="btn btn-primary"><i style=" font-size: 25px;" class="fas fa-chart-bar"></i></button>
                                         <button style="width: 60px; height: 50px; margin-top: -5px; background-color: #1e88e5" class="btn btn-primary"><i style=" font-size: 25px;" class="fas fa-cart-plus"></i></button>
                                     </div>
-                                    <p style="margin-left: 15px"><i>*Hãy nhập giá bạn muốn đấu giá vào khung !</i></p>
+                                    <p style="margin-left: 15px"><i>*Please enter the price you want to bid in the box!</i></p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="mk-product__content mk-tab-root">
-                        <ul class="mk-tab-list">
+                        <ul class="mk-tab-list" style="background-color: #f4f9ff;">
                             <li class="active"><a href="#tab-1">Description</a></li>
                             <li><a href="#tab-2">Specification</a></li>
                             <li><a href="#tab-3">Vendor</a></li>
                             <li><a href="#tab-4">Reviews (1)</a></li>
                             <li><a href="#tab-5">Questions and Answers</a></li>
-                            <li><a href="#tab-6">More Offers</a></li>
                         </ul>
                         <div class="mk-tabs">
                             <div class="mk-tab active" id="tab-1">
@@ -313,4 +315,18 @@
         </div>
     </div>
 </div>
-
+<script>function format_curency(a) {
+        a.value = a.value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
+    }
+    $(document).ready(function () {
+        $('.quantity-input').bind("cut copy paste drag drop", function (e) {
+            e.preventDefault();
+        });
+    });
+    function isNumberKey(e) {
+        var charCode = (e.which) ? e.which : e.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    }
+</script>

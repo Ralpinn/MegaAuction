@@ -2,7 +2,9 @@
 @{
     ViewBag.Title = "Home Page";
     List<Product> listproduct = ViewBag.ListPro;
+    List<Auction> dsauction = ViewBag.TableAuction;
     string statuslogin = Content.StatusLogin;
+    List<int> dsvt = Content.FinddsVt(dsauction, listproduct);
 }
 <style>
     #loginsuccess {
@@ -35,6 +37,9 @@
         setTimeout(displaylogin, 4000);
     </script>
     <div id="loginsuccess">@statuslogin</div>
+    {
+        Content.StatusLogin = "";
+    }
 }
 <!-- Main site menu section-->
 <div id="homepage-1">
@@ -68,17 +73,17 @@
             <div class="mk-section__header">
                 <div class="mk-block--countdown-deal">
                     <div class="mk-block__left">
-                        <h3>Today Deals</h3>
+                        <h3>Today Deals </h3>
                     </div>
                 </div><a href="#">View all</a>
             </div>
             <div class="mk-section__content">
                 <div class="mk-carousel--nav owl-slider" data-owl-auto="false" data-owl-loop="false" data-owl-speed="10000" data-owl-gap="30" data-owl-nav="true" data-owl-dots="true" data-owl-item="7" data-owl-item-xs="2" data-owl-item-sm="3" data-owl-item-md="4" data-owl-item-lg="5" data-owl-item-xl="6" data-owl-duration="1000" data-owl-mousedrag="on">
-                    @foreach (var pro in listproduct)
+                    @for (int i = 0; i < listproduct.Count; i++)
                     {
-                        <div class="mk-product">
+                        <div class="mk-product" style="box-shadow: 3px 3px 5px;height: 320px;">
                             <div class="mk-product__thumbnail">
-                                <a href="~/Home/DetailPro/@pro.idproduct"><img src="~/img/products/ProductofUser/@pro.ImageProduct.image1" height="190px" alt=""></a>
+                                <a href="~/Home/DetailPro/@listproduct[i].idproduct"><img src="~/img/products/ProductofUser/@listproduct[i].ImageProduct.image1" height="190px" alt=""></a>
                                 <ul class="mk-product__actions">
                                     <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
                                     <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
@@ -87,16 +92,23 @@
                                 </ul>
                             </div>
                             <div class="mk-product__container">
-                                <a class="mk-product__vendor">Sold by: @pro.User.name</a>
+                                <a href="~/Home/DetailPro/@listproduct[i].idproduct" class="mk-product__vendor">Sold by: @listproduct[i].User.name</a>
                                 <div class="mk-product__content">
-                                    <a class="mk-product__title" href="product-default.html">@pro.namepro</a>
+                                    <a href="~/Home/DetailPro/@listproduct[i].idproduct" class="mk-product__title" href="product-default.html">@listproduct[i].namepro</a>
                                     <div class="mk-product__rating">
-                                        <p class="mk-product__price sale" style="color: red"><i class="fas fa-gavel" style="margin-right: 5px"></i> @pro.priceauction vnđ</p>
+                                        @if (dsauction.Count != 0 && dsauction[dsvt[i]].idproduct == listproduct[i].idproduct && dsvt[i] != 0)
+                                        {
+                                            <p class="mk-product__price sale" style="color: red"><i class="fas fa-gavel" style="margin-right: 5px"></i> @dsauction[dsvt[i]].priceup vnđ</p>
+                                        }
+                                        else
+                                        {
+                                    <p class="mk-product__price sale" style="color: red"><i class="fas fa-gavel" style="margin-right: 5px"></i> @listproduct[i].priceauction vnđ</p>
+                                        }
                                     </div>
                                 </div>
                                 <div class="mk-product__content hover">
-                                    <a class="mk-product__title">Time End: @pro.timeend @Content.getDate(pro.dateend.Value)</a>
-                                    <p class="mk-product__price sale" style="color: red">Buy: @pro.pricebuy vnđ</p>
+                                    <a href="~/Home/DetailPro/@listproduct[i].idproduct" class="mk-product__title">Time End: @listproduct[i].timeend @Content.getDate(listproduct[i].dateend.Value)</a>
+                                    <p class="mk-product__price sale" style="color: red">Buy: @listproduct[i].pricebuy vnđ</p>
                                 </div>
                             </div>
                         </div>
@@ -215,12 +227,12 @@
                 </ul>
             </div>
             <div class="mk-section__content">
-                <div class="mk-carousel--nav owl-slider" data-owl-auto="false" data-owl-loop="false" data-owl-speed="10000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="7" data-owl-item-xs="2" data-owl-item-sm="2" data-owl-item-md="3" data-owl-item-lg="4" data-owl-item-xl="6" data-owl-duration="1000" data-owl-mousedrag="on">
-                    @for (int i = listproduct.Count - 1; i > 0; i--)
+                <div class="mk-carousel--nav owl-slider" data-owl-auto="false" data-owl-loop="false" data-owl-speed="10000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="7" data-owl-item-xs="2" data-owl-item-sm="3" data-owl-item-md="4" data-owl-item-lg="5" data-owl-item-xl="6" data-owl-duration="1000" data-owl-mousedrag="on">
+                    @for (int i = listproduct.Count - 1; i >= 0; i--)
                     {
-                        <div class="mk-product">
+                        <div class="mk-product" style="box-shadow: 3px 3px 5px;height: 320px;width: 225px;margin-right: 20px;">
                             <div class="mk-product__thumbnail">
-                                <a href="product-default.html"><img src="~/img/products/ProductofUser/@listproduct[i].ImageProduct.image1" height="190px" alt=""></a>
+                                <a href="~/Home/DetailPro/@listproduct[i].idproduct"><img src="~/img/products/ProductofUser/@listproduct[i].ImageProduct.image1" height="190px" alt=""></a>
                                 <ul class="mk-product__actions">
                                     <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
                                     <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
@@ -229,15 +241,21 @@
                                 </ul>
                             </div>
                             <div class="mk-product__container">
-                                <a class="mk-product__vendor">Sold by: @listproduct[i].User.name</a>
+                                <a href="~/Home/DetailPro/@listproduct[i].idproduct" class="mk-product__vendor">Sold by: @listproduct[i].User.name</a>
                                 <div class="mk-product__content">
-                                    <a class="mk-product__title" href="product-default.html">@listproduct[i].namepro</a>
+                                    <a href="~/Home/DetailPro/@listproduct[i].idproduct" class="mk-product__title" href="product-default.html">@listproduct[i].namepro</a>
                                     <div class="mk-product__rating">
-                                        <p class="mk-product__price sale"><i class="fas fa-gavel" style="margin-right: 5px"></i> @listproduct[i].priceauction vnđ</p>
+                                        @if (dsauction.Count != 0 && dsauction[dsvt[i]].idproduct == listproduct[i].idproduct && dsvt[i] != 0) 
+                                        {
+                                            <p class="mk-product__price sale" style="color: red"><i class="fas fa-gavel" style="margin-right: 5px"></i> @dsauction[dsvt[i]].priceup vnđ</p> }
+                                        else
+                                        {
+                                            <p class="mk-product__price sale" style="color: red"><i class="fas fa-gavel" style="margin-right: 5px"></i> @listproduct[i].priceauction vnđ</p>
+                                        }
                                     </div>
                                 </div>
                                 <div class="mk-product__content hover">
-                                    <a class="mk-product__title">Time End: @listproduct[i].timeend @Content.getDate(listproduct[i].dateend.Value)</a>
+                                    <a href="~/Home/DetailPro/@listproduct[i].idproduct" class="mk-product__title">Time End: @listproduct[i].timeend @Content.getDate(listproduct[i].dateend.Value)</a>
                                     <p class="mk-product__price sale">Buy: @listproduct[i].pricebuy vnđ</p>
                                 </div>
                             </div>
@@ -261,11 +279,11 @@
             </div>
             <div class="mk-section__content">
                 <div class="mk-carousel--responsive owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="10000" data-owl-gap="0" data-owl-nav="false" data-owl-dots="true" data-owl-item="7" data-owl-item-xs="2" data-owl-item-sm="2" data-owl-item-md="2" data-owl-item-lg="4" data-owl-item-xl="6" data-owl-duration="1000" data-owl-mousedrag="on">
-                    @foreach (var pro in listproduct)
+                    @for (int i = 0; i < listproduct.Count; i++)
                     {
-                        <div class="mk-product">
+                        <div class="mk-product" style="box-shadow: 3px 3px 5px;height: 320px;">
                             <div class="mk-product__thumbnail">
-                                <a href="~/Home/DetailPro/@pro.idproduct"><img src="~/img/products/ProductofUser/@pro.ImageProduct.image1" height="190px" alt=""></a>
+                                <a href="~/Home/DetailPro/@listproduct[i].idproduct"><img src="~/img/products/ProductofUser/@listproduct[i].ImageProduct.image1" height="190px" alt=""></a>
                                 <ul class="mk-product__actions">
                                     <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
                                     <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
@@ -274,16 +292,23 @@
                                 </ul>
                             </div>
                             <div class="mk-product__container">
-                                <a class="mk-product__vendor">Sold by: @pro.User.name</a>
+                                <a href="~/Home/DetailPro/@listproduct[i].idproduct" class="mk-product__vendor">Sold by: @listproduct[i].User.name</a>
                                 <div class="mk-product__content">
-                                    <a class="mk-product__title" href="product-default.html">@pro.namepro</a>
+                                    <a href="~/Home/DetailPro/@listproduct[i].idproduct" class="mk-product__title" href="product-default.html">@listproduct[i].namepro</a>
                                     <div class="mk-product__rating">
-                                        <p class="mk-product__price sale"><i class="fas fa-gavel" style="margin-right: 5px"></i> @pro.priceauction vnđ</p>
+                                        @if (dsauction.Count != 0 && dsauction[dsvt[i]].idproduct == listproduct[i].idproduct && dsvt[i] != 0)
+                                        {
+                                            <p class="mk-product__price sale" style="color: red"><i class="fas fa-gavel" style="margin-right: 5px"></i> @dsauction[dsvt[i]].priceup vnđ</p>
+                                        }
+                                        else
+                                        {
+                                    <p class="mk-product__price sale" style="color: red"><i class="fas fa-gavel" style="margin-right: 5px"></i> @listproduct[i].priceauction vnđ</p>
+                                        }
                                     </div>
                                 </div>
                                 <div class="mk-product__content hover">
-                                    <a class="mk-product__title">Time End: @pro.timeend @Content.getDate(pro.dateend.Value)</a>
-                                    <p class="mk-product__price sale">Buy: @pro.pricebuy vnđ</p>
+                                    <a href="~/Home/DetailPro/@listproduct[i].idproduct" class="mk-product__title">Time End: @listproduct[i].timeend @Content.getDate(listproduct[i].dateend.Value)</a>
+                                    <p class="mk-product__price sale" style="color: red">Buy: @listproduct[i].pricebuy vnđ</p>
                                 </div>
                             </div>
                         </div>
@@ -306,11 +331,11 @@
             </div>
             <div class="mk-section__content">
                 <div class="mk-carousel--responsive owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="10000" data-owl-gap="0" data-owl-nav="false" data-owl-dots="true" data-owl-item="7" data-owl-item-xs="2" data-owl-item-sm="2" data-owl-item-md="3" data-owl-item-lg="4" data-owl-item-xl="6" data-owl-duration="1000" data-owl-mousedrag="on">
-                    @for (int i = listproduct.Count - 1; i > 0; i--)
+                    @for (int i = listproduct.Count - 1; i >= 0; i--)
                     {
-                        <div class="mk-product">
+                        <div class="mk-product" style="box-shadow: 3px 3px 5px;height: 320px;width: 225px;margin-right: 20px;">
                             <div class="mk-product__thumbnail">
-                                <a href="product-default.html"><img src="~/img/products/ProductofUser/@listproduct[i].ImageProduct.image1" height="190px" alt=""></a>
+                                <a href="~/Home/DetailPro/@listproduct[i].idproduct"><img src="~/img/products/ProductofUser/@listproduct[i].ImageProduct.image1" height="190px" alt=""></a>
                                 <ul class="mk-product__actions">
                                     <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
                                     <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
@@ -319,15 +344,22 @@
                                 </ul>
                             </div>
                             <div class="mk-product__container">
-                                <a class="mk-product__vendor">Sold by: @listproduct[i].User.name</a>
+                                <a href="~/Home/DetailPro/@listproduct[i].idproduct" class="mk-product__vendor">Sold by: @listproduct[i].User.name</a>
                                 <div class="mk-product__content">
-                                    <a class="mk-product__title" href="product-default.html">@listproduct[i].namepro</a>
+                                    <a href="~/Home/DetailPro/@listproduct[i].idproduct" class="mk-product__title" href="product-default.html">@listproduct[i].namepro</a>
                                     <div class="mk-product__rating">
-                                        <p class="mk-product__price sale"><i class="fas fa-gavel" style="margin-right: 5px"></i> @listproduct[i].priceauction vnđ</p>
+                                        @if (dsauction.Count != 0 && dsauction[dsvt[i]].idproduct == listproduct[i].idproduct && dsvt[i] != 0)
+                                         {
+                                            <p class="mk-product__price sale" style="color: red"><i class="fas fa-gavel" style="margin-right: 5px"></i> @dsauction[dsvt[i]].priceup vnđ</p> 
+                                         }
+                                        else
+                                        {
+                                            <p class="mk-product__price sale" style="color: red"><i class="fas fa-gavel" style="margin-right: 5px"></i> @listproduct[i].priceauction vnđ</p>
+                                        }
                                     </div>
                                 </div>
                                 <div class="mk-product__content hover">
-                                    <a class="mk-product__title">Time End: @listproduct[i].timeend @Content.getDate(listproduct[i].dateend.Value)</a>
+                                    <a href="~/Home/DetailPro/@listproduct[i].idproduct" class="mk-product__title">Time End: @listproduct[i].timeend @Content.getDate(listproduct[i].dateend.Value)</a>
                                     <p class="mk-product__price sale">Buy: @listproduct[i].pricebuy vnđ</p>
                                 </div>
                             </div>

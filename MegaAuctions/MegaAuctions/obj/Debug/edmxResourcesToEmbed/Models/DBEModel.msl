@@ -67,13 +67,36 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Orders">
-      <EntityTypeMapping TypeName="MegaAuctionModel.Order">
-        <MappingFragment StoreEntitySet="Order">
-          <ScalarProperty Name="idorder" ColumnName="idorder" />
-          <ScalarProperty Name="dateorder" ColumnName="dateorder" />
-          <ScalarProperty Name="timeorder" ColumnName="timeorder" />
-          <ScalarProperty Name="idauction" ColumnName="idauction" />
+    <EntitySetMapping Name="Notifications">
+      <EntityTypeMapping TypeName="MegaAuctionModel.Notification">
+        <MappingFragment StoreEntitySet="Notification">
+          <ScalarProperty Name="idNotif" ColumnName="idNotif" />
+          <ScalarProperty Name="titleN" ColumnName="titleN" />
+          <ScalarProperty Name="contentN" ColumnName="contentN" />
+          <ScalarProperty Name="dateN" ColumnName="dateN" />
+          <ScalarProperty Name="statusNotif" ColumnName="statusNotif" />
+          <ScalarProperty Name="idproduct" ColumnName="idproduct" />
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payments">
+      <EntityTypeMapping TypeName="MegaAuctionModel.Payment">
+        <MappingFragment StoreEntitySet="Payments">
+          <ScalarProperty Name="idpay" ColumnName="idpay" />
+          <ScalarProperty Name="method" ColumnName="method" />
+          <ScalarProperty Name="currency" ColumnName="currency" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="tax" ColumnName="tax" />
+          <ScalarProperty Name="ship" ColumnName="ship" />
+          <ScalarProperty Name="namecontact" ColumnName="namecontact" />
+          <ScalarProperty Name="phonecontact" ColumnName="phonecontact" />
+          <ScalarProperty Name="addresscontact" ColumnName="addresscontact" />
+          <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="idproduct" ColumnName="idproduct" />
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

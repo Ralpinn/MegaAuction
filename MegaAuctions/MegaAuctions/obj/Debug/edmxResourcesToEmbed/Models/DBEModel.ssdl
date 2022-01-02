@@ -61,14 +61,36 @@
     <Property Name="image4" Type="ntext" />
     <Property Name="image5" Type="ntext" />
   </EntityType>
-  <EntityType Name="Order">
+  <EntityType Name="Notification">
     <Key>
-      <PropertyRef Name="idorder" />
+      <PropertyRef Name="idNotif" />
     </Key>
-    <Property Name="idorder" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="dateorder" Type="datetime" />
-    <Property Name="timeorder" Type="nvarchar" MaxLength="20" />
-    <Property Name="idauction" Type="int" />
+    <Property Name="idNotif" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="titleN" Type="ntext" />
+    <Property Name="contentN" Type="ntext" />
+    <Property Name="dateN" Type="datetime" />
+    <Property Name="statusNotif" Type="nvarchar" MaxLength="50" />
+    <Property Name="idproduct" Type="int" />
+    <Property Name="idUser" Type="int" />
+  </EntityType>
+  <EntityType Name="Payments">
+    <Key>
+      <PropertyRef Name="idpay" />
+    </Key>
+    <Property Name="idpay" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="method" Type="nvarchar" MaxLength="20" />
+    <Property Name="currency" Type="nvarchar" MaxLength="12" />
+    <Property Name="date" Type="datetime" />
+    <Property Name="price" Type="nvarchar" MaxLength="20" />
+    <Property Name="tax" Type="nvarchar" MaxLength="20" />
+    <Property Name="ship" Type="nvarchar" MaxLength="20" />
+    <Property Name="namecontact" Type="nvarchar" MaxLength="50" />
+    <Property Name="phonecontact" Type="nvarchar" MaxLength="12" />
+    <Property Name="addresscontact" Type="ntext" />
+    <Property Name="subtotal" Type="nvarchar" MaxLength="20" />
+    <Property Name="quantity" Type="int" />
+    <Property Name="idproduct" Type="int" />
+    <Property Name="idUser" Type="int" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
@@ -206,15 +228,27 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Order_Auction">
-    <End Role="Auction" Type="Self.Auction" Multiplicity="0..1" />
-    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+  <Association Name="FK_Notification_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Auction">
-        <PropertyRef Name="idauction" />
+      <Principal Role="Product">
+        <PropertyRef Name="idproduct" />
       </Principal>
-      <Dependent Role="Order">
-        <PropertyRef Name="idauction" />
+      <Dependent Role="Notification">
+        <PropertyRef Name="idproduct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payments_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="Payments" Type="Self.Payments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="idproduct" />
+      </Principal>
+      <Dependent Role="Payments">
+        <PropertyRef Name="idproduct" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -308,7 +342,8 @@
     <EntitySet Name="Chat" EntityType="Self.Chat" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DesciptionProduct" EntityType="Self.DesciptionProduct" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ImageProduct" EntityType="Self.ImageProduct" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Notification" EntityType="Self.Notification" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Payments" EntityType="Self.Payments" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Reviews" EntityType="Self.Reviews" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
@@ -333,9 +368,13 @@
       <End Role="RoomChat" EntitySet="RoomChat" />
       <End Role="Chat" EntitySet="Chat" />
     </AssociationSet>
-    <AssociationSet Name="FK_Order_Auction" Association="Self.FK_Order_Auction">
-      <End Role="Auction" EntitySet="Auction" />
-      <End Role="Order" EntitySet="Order" />
+    <AssociationSet Name="FK_Notification_Product" Association="Self.FK_Notification_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Notification" EntitySet="Notification" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payments_Product" Association="Self.FK_Payments_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Payments" EntitySet="Payments" />
     </AssociationSet>
     <AssociationSet Name="FK_Product_DesciptionProduct" Association="Self.FK_Product_DesciptionProduct">
       <End Role="DesciptionProduct" EntitySet="DesciptionProduct" />

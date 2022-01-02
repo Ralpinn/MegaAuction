@@ -188,7 +188,7 @@
                         <div class="owl-slider" id="recommended1" data-owl-auto="true" data-owl-loop="true" data-owl-speed="10000" data-owl-gap="30" data-owl-nav="false" data-owl-dots="false" data-owl-item="6" data-owl-item-xs="2" data-owl-item-sm="2" data-owl-item-md="3" data-owl-item-lg="4" data-owl-item-xl="5" data-owl-duration="1000" data-owl-mousedrag="on">
                             @foreach (var pro in listproduct)
                             {
-                                <div class="mk-product">
+                                <div class="mk-product" style="box-shadow: 3px 3px 5px; height: 320px;">
                                     <div class="mk-product__thumbnail">
                                         <a href="~/Home/DetailPro/@pro.idproduct"><img src="~/img/products/ProductofUser/@pro.ImageProduct.image1" height="190px" alt=""></a>
                                         <ul class="mk-product__actions">
@@ -199,15 +199,15 @@
                                         </ul>
                                     </div>
                                     <div class="mk-product__container">
-                                        <a class="mk-product__vendor">Sold by: @pro.User.name</a>
+                                        <a href="~/Home/DetailPro/@pro.idproduct" class="mk-product__vendor">Sold by: @pro.User.name</a>
                                         <div class="mk-product__content">
-                                            <a class="mk-product__title" href="product-default.html">@pro.namepro</a>
+                                            <a href="~/Home/DetailPro/@pro.idproduct" class="mk-product__title" href="product-default.html">@pro.namepro</a>
                                             <div class="mk-product__rating">
                                                 <p class="mk-product__price sale"><i class="fas fa-gavel" style="margin-right: 5px"></i> @pro.priceauction vnđ</p>
                                             </div>
                                         </div>
                                         <div class="mk-product__content hover">
-                                            <a class="mk-product__title">Time End: @pro.timeend @Content.getDate(pro.dateend.Value)</a>
+                                            <a href="~/Home/DetailPro/@pro.idproduct" class="mk-product__title">Time End: @pro.timeend @Content.getDate(pro.dateend.Value)</a>
                                             <p class="mk-product__price sale">Buy: @pro.pricebuy vnđ</p>
                                         </div>
                                     </div>
@@ -225,9 +225,9 @@
                         <div class="owl-slider" id="recommended" data-owl-auto="true" data-owl-loop="true" data-owl-speed="10000" data-owl-gap="30" data-owl-nav="false" data-owl-dots="false" data-owl-item="6" data-owl-item-xs="2" data-owl-item-sm="2" data-owl-item-md="3" data-owl-item-lg="4" data-owl-item-xl="5" data-owl-duration="1000" data-owl-mousedrag="on">
                             @for (int i = listproduct.Count-1; i > 0; i--)
                             {
-                                <div class="mk-product">
+                                <div class="mk-product" style="box-shadow: 3px 3px 5px;height: 320px;">
                                     <div class="mk-product__thumbnail">
-                                        <a href="product-default.html"><img src="~/img/products/ProductofUser/@listproduct[i].ImageProduct.image1" height="190px" alt=""></a>
+                                        <a href="~/Home/DetailPro/@listproduct[i].idproduct"><img src="~/img/products/ProductofUser/@listproduct[i].ImageProduct.image1" height="190px" alt=""></a>
                                         <ul class="mk-product__actions">
                                             <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
                                             <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
@@ -236,15 +236,15 @@
                                         </ul>
                                     </div>
                                     <div class="mk-product__container">
-                                        <a class="mk-product__vendor">Sold by: @listproduct[i].User.name</a>
+                                        <a href="~/Home/DetailPro/@listproduct[i].idproduct" class="mk-product__vendor">Sold by: @listproduct[i].User.name</a>
                                         <div class="mk-product__content">
-                                            <a class="mk-product__title" href="product-default.html">@listproduct[i].namepro</a>
+                                            <a href="~/Home/DetailPro/@listproduct[i].idproduct" class="mk-product__title" href="product-default.html">@listproduct[i].namepro</a>
                                             <div class="mk-product__rating">
                                                 <p class="mk-product__price sale"><i class="fas fa-gavel" style="margin-right: 5px"></i> @listproduct[i].priceauction vnđ</p>
                                             </div>
                                         </div>
                                         <div class="mk-product__content hover">
-                                            <a class="mk-product__title">Time End: @listproduct[i].timeend @Content.getDate(listproduct[i].dateend.Value)</a>
+                                            <a href="~/Home/DetailPro/@listproduct[i].idproduct" class="mk-product__title">Time End: @listproduct[i].timeend @Content.getDate(listproduct[i].dateend.Value)</a>
                                             <p class="mk-product__price sale">Buy: @listproduct[i].pricebuy vnđ</p>
                                         </div>
                                     </div>
@@ -307,9 +307,9 @@
                                     @foreach (var pro in listproduct)
                                     {
                                         <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-6 " style="margin-bottom: 40px">
-                                            <div class="mk-product">
+                                            <div class="mk-product" style="box-shadow: 3px 3px 5px;height: 320px;">
                                                 <div class="mk-product__thumbnail">
-                                                    <a href="product-default.html"><img src="~/img/products/ProductofUser/@pro.ImageProduct.image1" height="190px" alt=""></a>
+                                                    <a href="~/Home/DetailPro/@pro.idproduct"><img src="~/img/products/ProductofUser/@pro.ImageProduct.image1" height="190px" alt=""></a>
                                                     <ul class="mk-product__actions">
                                                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
                                                         <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
@@ -318,15 +318,15 @@
                                                     </ul>
                                                 </div>
                                                 <div class="mk-product__container">
-                                                    <a class="mk-product__vendor">Sold by: @pro.User.name</a>
+                                                    <a href="~/Home/DetailPro/@pro.idproduct" class="mk-product__vendor">Sold by: @pro.User.name</a>
                                                     <div class="mk-product__content">
-                                                        <a class="mk-product__title" href="product-default.html">@pro.namepro</a>
+                                                        <a href="~/Home/DetailPro/@pro.idproduct" class="mk-product__title" href="product-default.html">@pro.namepro</a>
                                                         <div class="mk-product__rating">
                                                             <p class="mk-product__price sale"><i class="fas fa-gavel" style="margin-right: 5px"></i> @pro.priceauction vnđ</p>
                                                         </div>
                                                     </div>
                                                     <div class="mk-product__content hover">
-                                                        <a class="mk-product__title">Time End: @pro.timeend @Content.getDate(pro.dateend.Value)</a>
+                                                        <a href="~/Home/DetailPro/@pro.idproduct" class="mk-product__title">Time End: @pro.timeend @Content.getDate(pro.dateend.Value)</a>
                                                         <p class="mk-product__price sale">Buy: @pro.pricebuy vnđ</p>
                                                     </div>
                                                 </div>

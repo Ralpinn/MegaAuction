@@ -14,12 +14,6 @@ namespace MegaAuctions.Models
     
     public partial class Auction
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Auction()
-        {
-            this.Orders = new HashSet<Order>();
-        }
-    
         public int idauction { get; set; }
         public string priceup { get; set; }
         public Nullable<System.DateTime> dateauction { get; set; }
@@ -30,7 +24,5 @@ namespace MegaAuctions.Models
         public Nullable<int> idproduct { get; set; }
     
         public virtual Product Product { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
     }
 }

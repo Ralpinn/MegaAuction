@@ -2,8 +2,11 @@
 @{
     ViewBag.Title = "Detail Product";
     Product depro = ViewBag.DetailProduct;
+    List<Auction> dsauction = ViewBag.TableAuction;
+    string check = Content.RoleUser;
+    int vitri = Content.FindVt(dsauction, depro.idproduct);
+    string rowfirst = "rowfirst1";
 }
-
 <style>
     .mk-product__content .mk-tabs {
         margin-left: 20px;
@@ -18,7 +21,71 @@
     .home-detail-pro {
         margin: 30px 50px 0px 60px;
     }
+
+    #pricesuccess {
+        color: white;
+        position: absolute;
+        z-index: 0;
+        top: 160px;
+        right: 0px;
+        width: 0px;
+        height: 70px;
+        font-size: 20px;
+        padding: 20px 15px 15px 30px;
+        border-radius: 7px;
+        transition: 0.6s cubic-bezier(0, 1.1, 0.5, 1.2);
+    }
+    .rowfirst1{
+        background-color: aqua;
+    }
 </style>
+@if (Content.StatusSSPrice == "Auction failed, Minimum bid is 10,000 more than current price!")
+{
+    <script>
+        function auctionfail() {
+            document.getElementById("auctionfailed").style.backgroundColor = "#ef3a3a";
+            document.getElementById("auctionfailed").style.width = "530px";
+            document.getElementById("auctionfailed").style.height = "60px";
+            document.getElementById("auctionfailed").style.color = "white";
+            document.getElementById("auctionfailed").style.color = "white";
+            document.getElementById("auctionfailed").style.fontSize = "18px";
+            document.getElementById("auctionfailed").style.position = "absolute";
+            document.getElementById("auctionfailed").style.zIndex = "100";
+            document.getElementById("auctionfailed").style.right = "0";
+            document.getElementById("auctionfailed").style.padding = "10px";
+        }
+        setTimeout(auctionfail, 1000);
+        function displayuactionfail() {
+            document.getElementById("auctionfailed").style.transition = "visibility 3s, opacity 3s linear;";
+            document.getElementById("auctionfailed").style.opacity = "0";
+        }
+        setTimeout(displayuactionfail, 4000);
+    </script>
+    <div id="auctionfailed">@Content.StatusSSPrice</div>
+    {
+        Content.StatusSSPrice = "";
+    } 
+ }
+@if (Content.StatusSSPrice == "Auction success!")
+{
+    <script>
+        function pricesuccess12() {
+            document.getElementById("pricesuccess").style.zIndex = "100";
+            document.getElementById("pricesuccess").style.backgroundColor = "#4bb84b";
+            document.getElementById("pricesuccess").style.width = "320px";
+        }
+        setTimeout(pricesuccess12, 1000);
+        function displayprice() {
+            document.getElementById("pricesuccess").style.transition = "visibility 3s, opacity 3s linear;";
+            document.getElementById("pricesuccess").style.opacity = "0";
+        }
+        setTimeout(displayprice, 4000);
+    </script>
+    <div id="pricesuccess">@Content.StatusSSPrice</div>
+    {
+        Content.StatusSSPrice = "";
+    }
+}
 <div class="home-detail-pro">
     <div class="mk-container">
         <div class="mk-page__container">
@@ -46,33 +113,43 @@
                             </div>
                         </div>
                         <div class="mk-product__info">
-                            <h2>Marshall Kilburn Portable Wireless Speaker</h2>
-                            <p>Sold By:<a href="shop-default.html"><strong> Go Pro</strong></a></p>
+                            <h2 style="font-size: 30px; font-weight: 600;">@depro.namepro</h2>
+                            <p>Sold By:<a href="shop-default.html"><strong> @depro.User.name</strong></a></p>
                             <h4 class="mk-product__price">Auction time: @depro.timestart @Content.getDate(depro.datestart.Value) - @depro.timeend @Content.getDate(depro.dateend.Value)</h4>
                             <style>
                                 .countdowncd {
                                     display: flex;
                                 }
 
-                                    .countdowncd .timecd {
-                                        margin-right: 10px;
-                                        text-align: center;
-                                    }
+                                .countdowncd .timecd {
+                                    margin-right: 10px;
+                                    text-align: center;
+                                }
 
-                                    .countdowncd .dongho {
-                                        text-align: center;
-                                        border: 3px solid #c0e3e8;
-                                        background-color: #d6f2f2;
-                                        padding-top: 10px;
-                                        width: 70px;
-                                        height: 80px;
-                                        font-size: 45px;
-                                    }
+                                .countdowncd .dongho {
+                                    text-align: center;
+                                    border: 3px solid #f4f9ff;
+                                    background-color: #f4f9ff;
+                                    box-shadow: 2px 5px 5px;
+                                    padding-top: 4px;
+                                    width: 70px;
+                                    height: 80px;
+                                    font-size: 45px;
+                                    color: #156614;
+                                }
 
                                 .twodot {
                                     margin-right: 10px;
                                     font-size: 45px;
                                     padding-top: 10px;
+                                }
+                                #click_endtime_reset {
+                                    position: absolute;
+                                    width: 1px;
+                                    height: 1px;
+                                    z-index: -100;
+                                    background-color: white;
+                                    border: none;
                                 }
                             </style>
                             <!--//COUNTDOWN-->
@@ -97,10 +174,12 @@
                                     <h2 id="secondcd" class="dongho">00</h2>
                                     <small>Seconds</small>
                                 </div>
+                                @*Nut an, dung de goi ham khi phien dau gia het han*@
+                                <input id="click_endtime_reset" class="btn btn-primary" type="button" value="O" onclick="location.href='@Url.Action("EndResetAuction", "Home", new { idUser = Content.FindidUserWinner(dsauction,depro.idproduct), idproduct= depro.idproduct})'" /> 
                             </div>
                             <style>
                                 .pricebuy {
-                                    background-color: ivory;
+                                    background-color: #f4f9ff;
                                     width: 100%;
                                     height: 70px;
                                     display: flex;
@@ -138,13 +217,18 @@
                                     color: orangered;
                                     font-size: 27px;
                                     float: right;
-                                    margin-right: 350px;
+                                    margin-right: 340px;
                                 }
 
                                 .pricebuy span {
                                     color: orangered;
                                     font-size: 27px;
                                     margin-left: 25px;
+                                    margin-left: auto;
+                                }
+
+                                .inputauction {
+                                    display: inline-flex;
                                 }
 
                                 .priceauction .inputauction input {
@@ -156,34 +240,114 @@
                                     margin: 5px 0px 0px 15px;
                                     border: 1px solid #86bfe4;
                                 }
+
+                                .table_auction {
+                                    position: absolute;
+                                    text-align: -webkit-center;
+                                    top: 10%;
+                                    left: 33%;
+                                    border: 1px solid #dedede;
+                                    z-index: 1000;
+                                    width: 560px;
+                                    height: 580px;
+                                    background-color: white;
+                                    padding: 10px 20px 0px 20px;
+                                    overflow-y: scroll;
+                                    box-shadow: 5px 5px 5px;
+                                    display: none;
+                                }
+
+                                    .table_auction table tr th {
+                                        border-bottom: 1px solid #cacaca;
+                                    }
                             </style>
                             <div class="mk-product__shopping">
                                 <div class="pricebuy">
                                     <small>Price Buy:</small>
                                     <span>@depro.pricebuy <t style="font-size: 15px;font-family: fangsong;">VND</t></span>
-                                    <button style="width: 200px;font-size: 17px; height: 40px; margin-left: auto; margin-right: 200px; border-radius: 20px; background-color:#1f921f" class="btn btn-success"><i style=" font-size: 20px; margin-right: 12px;" class="fas fa-donate"></i>BUY NOW</button>
+                                    <button id="btn-paynow" onclick="location.href='@Url.Action("Index", "Payment", new {idproduct = depro.idproduct})'" style="width: 200px;font-size: 17px; height: 40px; margin-left: auto; margin-right: 190px; border-radius: 5px; background-color:#1f921f" class="btn btn-success">
+                                        <i style=" font-size: 20px; margin-right: 12px;" class="fas fa-donate"></i>BUY NOW
+                                    </button>
                                 </div>
                                 <div class="priceauction">
-                                    <small>Price Now:</small> <span>@depro.priceauction <t style="font-size: 15px;font-family: fangsong;">VND</t> <t><img src="~/img/products/load2.gif" style="width: 100px;margin-left: -20px;margin-top: -5px;" /></t></span>
+                                    @if (dsauction.Count != 0 && dsauction[vitri].idproduct == depro.idproduct)
+                                    {           
+                                        <small>Price Now:</small> <span>@dsauction[vitri].priceup <t style="font-size: 15px;font-family: fangsong;">VND</t> <t><img src="~/img/products/load2.gif" style="width: 100px;margin-left: -20px;margin-top: -5px;" /></t></span>
+                                    }
+                                    else
+                                    {
+                                        <small>Price Now:</small> <span>@depro.priceauction <t style="font-size: 15px;font-family: fangsong;">VND</t> <t><img src="~/img/products/load2.gif" style="width: 100px;margin-left: -20px;margin-top: -5px;" /></t></span>
+                                    }
                                     <div class="inputauction">
-                                        <input type="text" placeholder="Auction...." />
-                                        <button style="width: 60px; height: 50px; margin-top: -5px; background-color: #1e88e5" class="btn btn-primary"><i style=" font-size: 25px;" class="fas fa-gavel"></i></button>
-                                        <button style="width: 60px; height: 50px; margin-top: -5px; background-color: #1e88e5" class="btn btn-primary"><i style=" font-size: 25px;" class="fas fa-chart-bar"></i></button>
-                                        <button style="width: 60px; height: 50px; margin-top: -5px; background-color: #1e88e5" class="btn btn-primary"><i style=" font-size: 25px;" class="fas fa-cart-plus"></i></button>
+                                        <form method="post">
+                                            <input style="display: none" name="idproduct" value="@depro.idproduct" />
+                                            @if (dsauction.Count != 0 && dsauction[vitri].idproduct == depro.idproduct)
+                                            {
+                                                <input style="display: none" name="pricenoww" value="@dsauction[vitri].priceup" />
+                                            }
+                                            else
+                                            {
+                                                <input style="display: none" name="pricenoww" value="@depro.priceauction" />
+                                            }
+                                            <input onChange="format_curency(this)" onkeypress="return isNumberKey(event)" name="priceup" type="text" placeholder="Auction...." />
+                                            @if (check == "0")
+                                            {
+                                                <button type="button" id="btn_aclogin" style="width: 60px; height: 50px; margin-top: -5px; background-color: #1e88e5" class="btn btn-primary"><i style=" font-size: 25px;" class="fas fa-gavel"></i></button>
+                                            }
+                                            else if (check == "2" || check == "3")
+                                            {
+                                                <button id="btn_auction" type="submit" style="width: 60px; height: 50px; margin-top: -5px; background-color: #1e88e5" class="btn btn-primary"><i style=" font-size: 25px;" class="fas fa-gavel"></i></button>
+                                            }
+                                        </form>
+                                        <button id="btntable_auction" style="width: 60px; height: 50px; margin-top: 6px; margin-left: 5px; background-color: #1e88e5" class="btn btn-primary"><i style=" font-size: 25px;" class="fas fa-chart-bar"></i></button>
+                                        <button id="btn_cart" style="width: 60px; height: 50px; margin-top: 6px; margin-left: 5px; background-color: #1e88e5" class="btn btn-primary"><i style=" font-size: 25px;" class="fas fa-cart-plus"></i></button>
                                     </div>
-                                    <p style="margin-left: 15px"><i>*Hãy nhập giá bạn muốn đấu giá vào khung !</i></p>
+                                    <p style="margin-left: 15px"><i>*Please enter the price you want to bid in the box!</i></p>
+                                </div>
+                                <div class="table_auction">
+                                    <img src="~/img/bg/banner_aution.jpg" width="100%" height="200px" />
+                                    <h1 style="background-color:#dcebfa">List of users participating in the auction</h1>
+                                    <hr />
+                                    <table border="0" cellspacing="0" cellpadding="5" width="520" style="text-align: center">
+                                        <tr>
+                                            <th>ID User</th>
+                                            <th>Name User</th>
+                                            <th>Price Auction</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>Status</th>
+                                        </tr>
+                                        <tbody>                                            
+                                            @for (int i = dsauction.Count - 1; i >= 0; i--)
+                                            {
+                                                if (dsauction[i].idproduct == depro.idproduct)
+                                                {                                                    
+                                                    <tr class="@rowfirst">
+                                                        <td>@dsauction[i].idUser</td>
+                                                        <td>*****</td>
+                                                        <td>@dsauction[i].priceup</td>
+                                                        <td>@Content.getDate(dsauction[i].dateauction.Value)</td>
+                                                        <td>@dsauction[i].timeauction</td>
+                                                        <td>@dsauction[i].statusauction</td>
+                                                    </tr>
+                                                    {
+                                                        rowfirst += "a";
+                                                    }
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="mk-product__content mk-tab-root">
-                        <ul class="mk-tab-list">
+                        <ul class="mk-tab-list" style="background-color: #f4f9ff;">
                             <li class="active"><a href="#tab-1">Description</a></li>
                             <li><a href="#tab-2">Specification</a></li>
                             <li><a href="#tab-3">Vendor</a></li>
                             <li><a href="#tab-4">Reviews (1)</a></li>
                             <li><a href="#tab-5">Questions and Answers</a></li>
-                            <li><a href="#tab-6">More Offers</a></li>
                         </ul>
                         <div class="mk-tabs">
                             <div class="mk-tab active" id="tab-1">
@@ -317,6 +481,40 @@
         </div>
     </div>
 </div>
+<script>
+    function format_curency(a) {
+        a.value = a.value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
+    }
+    $(document).ready(function () {
+        $('.quantity-input').bind("cut copy paste drag drop", function (e) {
+            e.preventDefault();
+        });
+    });
+    function isNumberKey(e) {
+        var charCode = (e.which) ? e.which : e.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        $("#btntable_auction").click(function () {
+            var display = $(".table_auction").css("display");
+            if (display != "none") {
+                $(".table_auction").attr("style", "display:none;");
+            }
+            else {
+                $(".table_auction").attr("style", "display:block;");
+            }
+        })
+    })
 
+    $(document).ready(function () {
+        $("#btn_aclogin").click(function () {
+            alert("PLEASE LOGIN IN THE SYSTEM!")
+        })
+    })
+</script>
 
 

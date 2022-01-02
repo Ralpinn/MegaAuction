@@ -1,136 +1,81 @@
-﻿@{
+﻿@using MegaAuctions.Models;
+@{ 
     ViewBag.Title = "Register";
-    Layout = null;
+    string statuslogin = Content.StatusLogin; 
 }
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <base href="/">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="rica">
-    <meta name="keywords" content="rica">
-    <meta name="author" content="rica">
-    <link rel="icon" href="~/img/favicon.png" type="image/x-icon" />
-    <title>Mega Auction</title>
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="~/vendor/bootstrap/css/bootstrap.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="~/fonts/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="~/fonts/fonts/iconic/css/material-design-iconic-font.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="~/vendor/animate/animate.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="~/vendor/css-hamburgers/hamburgers.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="~/vendor/animsition/css/animsition.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="~/vendor/select2/select2.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="~/vendor/daterangepicker/daterangepicker.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="~/Content/css/util.css">
-    <link rel="stylesheet" type="text/css" href="~/Content/css/main.css">
-    <!--===============================================================================================-->
-    <style>
-        input[type="date"]::-webkit-calendar-picker-indicator {
-            cursor: pointer;
-            color: white;
-            filter: invert(0.8);
-        }
-
-        option {
-            background-color: darkslategrey;
-        }
-
-        body {
-            overflow-y: hidden;
-        }
-    </style>
-</head>
-<body>
-    <div class="container-login100" style="z-index: 10">
-        <img src="~/img/bg_auction.jpg" width="100%" height="100%" style="filter: brightness(25%); position: absolute;" />
-        <div class="wrap-login100" style="margin-top: -8px; width: 600px;">
-            <form class="login100-form validate-form" method="post">
-                <img src="~/img/logo_hethongbig.png" style="display: block; margin-left: auto; margin-right: auto; margin-top: -50px; height: 110px; width: 390px;" />
-                <span class="login100-form-title p-b-10 p-t-10">
-                    Register
-                </span>
-
-                <div class="wrap-input100 validate-input" data-validate="Enter username">
-                    <input class="input100" type="text" name="HoTen" placeholder="Họ tên">
-                    <span class="focus-input100" data-placeholder="&#xf207;"></span>
-                </div>
-
-                <div class="wrap-input100 validate-input" data-validate="Enter password" style="width: 50%; float: right;">
-                    <input class="input100" type="date" name="NgaySinh" placeholder="Ngày sinh" style="color: white">
-                    <span class="focus-input100" data-placeholder="&#xf331;"></span>
-                </div>
-                <div class="wrap-input100 validate-input" data-validate="Enter password" style="width: 50%; ">
-                    <select class="input100" name="GioiTinh" style="border: none;">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Mega Auction</title>
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+<link rel="stylesheet" href="~/Content/css/logincss.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+    #loginfailed {
+        color: white;
+        position: absolute;
+        z-index: 100;
+        top: 100px;
+        left: 0px;
+        width: 0px;
+        height: 70px;
+        font-size: 20px;
+        padding: 20px 15px 15px 30px;
+        border-radius: 7px;
+        transition: 0.6s cubic-bezier(0, 1.1, 0.5, 1.2);
+    }
+    .formlogin .signin {
+        text-align: center;
+        position: relative;
+        width: 400px;
+        height: 550px;
+    }
+    .formlogin input {
+        font-size: 18px;
+        height: 50px;
+        margin-bottom: -10px;
+    }
+    .formlogin select {
+        border: none;
+        width: 117px;
+    }
+</style>
+<div class="login123">
+    @if (statuslogin != "")
+    {
+<script>
+    function loginfail() {
+        document.getElementById("loginfailed").style.backgroundColor = "#ef3a3a";
+        document.getElementById("loginfailed").style.width = "320px";
+    }
+    setTimeout(loginfail, 1000);
+</script>
+                <div id="loginfailed">@statuslogin</div>}
+    <form method="post" class="formlogin" style="height: 650px">
+        <div class="signin">
+            <i class="fa fa-empire"></i>
+            <h2 style="margin-top: -40px">Register</h2>
+            <div class="group"><input name="name" required placeholder="Name"><i class="fa fa-user"></i></div>
+            <div class="group"><input type="email" required name="email" placeholder="Gmail"><i class="fa fa-lock"></i></div>
+            <div class="group"><input type="tel" required name="phone" placeholder="Phone"><i class="fa fa-lock"></i></div>
+            <div style="display: flex">
+                <div class="group"><input type="date" required name="born" placeholder="Born"></div>
+                <div class="group" style="margin: 0px 0px 0px 10px; font-size: 18px; height: 50px; padding: 12px 20px 12px 20px; border: 0; box-shadow: 0px 1.5px black; background-color: white; border-radius: 20px; ">
+                    <select name="gender">
                         <option>Nam</option>
                         <option>Nữ</option>
                         <option>Khác</option>
                     </select>
-                    <span class="focus-input100" data-placeholder="&#xf211;"></span>
                 </div>
-                <div class="wrap-input100 validate-input" data-validate="Enter password" style="width: 50%; float: right;">
-                    <input class="input100" type="tel" name="Sdt" placeholder="Số điện thoại">
-                    <span class="focus-input100" data-placeholder="&#xf2bc;"></span>
-                </div>
-                <div class="wrap-input100 validate-input" data-validate="Enter username" style="width: 50%;">
-                    <input class="input100" type="email" name="Email" placeholder="Email">
-                    <span class="focus-input100" data-placeholder="&#xf34e;"></span>
-                </div>
-                <div class="wrap-input100 validate-input" data-validate="Enter password">
-                    <input class="input100" type="text" name="DiaChi" placeholder="Địa chỉ">
-                    <span class="focus-input100" data-placeholder="&#xf1ab;"></span>
-                </div>
-                <div class="wrap-input100 validate-input" data-validate="Enter password" style="width: 50%; float: right;">
-                    <input class="input100" type="tel" name="Cmnd" placeholder="CMNN">
-                    <span class="focus-input100" data-placeholder="&#xf129;"></span>
-                </div>
-                <div class="wrap-input100 validate-input" data-validate="Enter username" style="width: 50%;">
-                    <input class="input100" type="text" name="QuocTich" placeholder="Quốc tịch">
-                    <span class="focus-input100" data-placeholder="&#xf173;"></span>
-                </div>
-                <div class="wrap-input100 validate-input" data-validate="Enter password">
-                    <input class="input100" type="text" name="TenDangNhap" placeholder="Tên đăng nhập">
-                    <span class="focus-input100" data-placeholder="&#xf207;"></span>
-                </div>
-                <div class="wrap-input100 validate-input" data-validate="Enter username">
-                    <input class="input100" type="password" name="Password" placeholder="Mật khẩu">
-                    <span class="focus-input100" data-placeholder="&#xf191;"></span>
-                </div>
-                <div class="container-login100-form-btn">
-                    <input class="login100-form-btn" type="submit" placeholder="Register" value="Register" />
-                </div>
-            </form>
+            </div>
+            <div class="group"><input required name="address" placeholder="Address"><i class="fa fa-user"></i></div>
+            <div class="group"><input required type="password" name="password" placeholder="Password"><i class="fa fa-lock"></i></div>
+            <button type="submit" style="margin-top: 15px"><i class="fa fa-send"></i>Singin</button>
         </div>
-    </div>
-    <div id="dropDownSelect1"></div>
+    </form>
+</div>
 
-    <!--===============================================================================================-->
-    <script src="~/vendor/jquery/jquery-3.2.1.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="~/vendor/animsition/js/animsition.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="~/vendor/bootstrap/js/popper.js"></script>
-    <script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="~/vendor/select2/select2.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="~/vendor/daterangepicker/moment.min.js"></script>
-    <script src="~/vendor/daterangepicker/daterangepicker.js"></script>
-    <!--===============================================================================================-->
-    <script src="~/vendor/countdowntime/countdowntime.js"></script>
-    <!--===============================================================================================-->
-    <script src="~/Scripts/js/main.js"></script>
-
-</body>
-</html>
 
 

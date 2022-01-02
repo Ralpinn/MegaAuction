@@ -66,14 +66,36 @@
           <Property Name="image4" Type="ntext" />
           <Property Name="image5" Type="ntext" />
         </EntityType>
-        <EntityType Name="Order">
+        <EntityType Name="Notification">
           <Key>
-            <PropertyRef Name="idorder" />
+            <PropertyRef Name="idNotif" />
           </Key>
-          <Property Name="idorder" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="dateorder" Type="datetime" />
-          <Property Name="timeorder" Type="nvarchar" MaxLength="20" />
-          <Property Name="idauction" Type="int" />
+          <Property Name="idNotif" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="titleN" Type="ntext" />
+          <Property Name="contentN" Type="ntext" />
+          <Property Name="dateN" Type="datetime" />
+          <Property Name="statusNotif" Type="nvarchar" MaxLength="50" />
+          <Property Name="idproduct" Type="int" />
+          <Property Name="idUser" Type="int" />
+        </EntityType>
+        <EntityType Name="Payments">
+          <Key>
+            <PropertyRef Name="idpay" />
+          </Key>
+          <Property Name="idpay" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="method" Type="nvarchar" MaxLength="20" />
+          <Property Name="currency" Type="nvarchar" MaxLength="12" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="price" Type="nvarchar" MaxLength="20" />
+          <Property Name="tax" Type="nvarchar" MaxLength="20" />
+          <Property Name="ship" Type="nvarchar" MaxLength="20" />
+          <Property Name="namecontact" Type="nvarchar" MaxLength="50" />
+          <Property Name="phonecontact" Type="nvarchar" MaxLength="12" />
+          <Property Name="addresscontact" Type="ntext" />
+          <Property Name="subtotal" Type="nvarchar" MaxLength="20" />
+          <Property Name="quantity" Type="int" />
+          <Property Name="idproduct" Type="int" />
+          <Property Name="idUser" Type="int" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -211,15 +233,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order_Auction">
-          <End Role="Auction" Type="Self.Auction" Multiplicity="0..1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+        <Association Name="FK_Notification_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Auction">
-              <PropertyRef Name="idauction" />
+            <Principal Role="Product">
+              <PropertyRef Name="idproduct" />
             </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="idauction" />
+            <Dependent Role="Notification">
+              <PropertyRef Name="idproduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payments_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Payments" Type="Self.Payments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="idproduct" />
+            </Principal>
+            <Dependent Role="Payments">
+              <PropertyRef Name="idproduct" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -313,7 +347,8 @@
           <EntitySet Name="Chat" EntityType="Self.Chat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DesciptionProduct" EntityType="Self.DesciptionProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ImageProduct" EntityType="Self.ImageProduct" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notification" EntityType="Self.Notification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payments" EntityType="Self.Payments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reviews" EntityType="Self.Reviews" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
@@ -338,9 +373,13 @@
             <End Role="RoomChat" EntitySet="RoomChat" />
             <End Role="Chat" EntitySet="Chat" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order_Auction" Association="Self.FK_Order_Auction">
-            <End Role="Auction" EntitySet="Auction" />
-            <End Role="Order" EntitySet="Order" />
+          <AssociationSet Name="FK_Notification_Product" Association="Self.FK_Notification_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Notification" EntitySet="Notification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payments_Product" Association="Self.FK_Payments_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Payments" EntitySet="Payments" />
           </AssociationSet>
           <AssociationSet Name="FK_Product_DesciptionProduct" Association="Self.FK_Product_DesciptionProduct">
             <End Role="DesciptionProduct" EntitySet="DesciptionProduct" />
@@ -389,7 +428,6 @@
           <Property Name="idUser" Type="Int32" />
           <Property Name="idproduct" Type="Int32" />
           <NavigationProperty Name="Product" Relationship="Self.FK_Auction_Product" FromRole="Auction" ToRole="Product" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Auction" FromRole="Auction" ToRole="Order" />
         </EntityType>
         <EntityType Name="Blog">
           <Key>
@@ -444,15 +482,38 @@
           <Property Name="image5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Products" Relationship="Self.FK_Product_ImageProduct" FromRole="ImageProduct" ToRole="Product" />
         </EntityType>
-        <EntityType Name="Order">
+        <EntityType Name="Notification">
           <Key>
-            <PropertyRef Name="idorder" />
+            <PropertyRef Name="idNotif" />
           </Key>
-          <Property Name="idorder" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="dateorder" Type="DateTime" Precision="3" />
-          <Property Name="timeorder" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="idauction" Type="Int32" />
-          <NavigationProperty Name="Auction" Relationship="Self.FK_Order_Auction" FromRole="Order" ToRole="Auction" />
+          <Property Name="idNotif" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="titleN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="contentN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="dateN" Type="DateTime" Precision="3" />
+          <Property Name="statusNotif" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="idproduct" Type="Int32" />
+          <Property Name="idUser" Type="Int32" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Notification_Product" FromRole="Notification" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="idpay" />
+          </Key>
+          <Property Name="idpay" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="method" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="currency" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="price" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="tax" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ship" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="namecontact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="phonecontact" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="addresscontact" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="subtotal" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="quantity" Type="Int32" />
+          <Property Name="idproduct" Type="Int32" />
+          <Property Name="idUser" Type="Int32" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Payments_Product" FromRole="Payments" ToRole="Product" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -475,6 +536,8 @@
           <NavigationProperty Name="Auctions" Relationship="Self.FK_Auction_Product" FromRole="Product" ToRole="Auction" />
           <NavigationProperty Name="DesciptionProduct" Relationship="Self.FK_Product_DesciptionProduct" FromRole="Product" ToRole="DesciptionProduct" />
           <NavigationProperty Name="ImageProduct" Relationship="Self.FK_Product_ImageProduct" FromRole="Product" ToRole="ImageProduct" />
+          <NavigationProperty Name="Notifications" Relationship="Self.FK_Notification_Product" FromRole="Product" ToRole="Notification" />
+          <NavigationProperty Name="Payments" Relationship="Self.FK_Payments_Product" FromRole="Product" ToRole="Payments" />
           <NavigationProperty Name="TypeProduct" Relationship="Self.FK_Product_TypeProduct" FromRole="Product" ToRole="TypeProduct" />
           <NavigationProperty Name="User" Relationship="Self.FK_Product_User" FromRole="Product" ToRole="User" />
           <NavigationProperty Name="Reviews" Relationship="Self.FK_Reviews_Product" FromRole="Product" ToRole="Reviews" />
@@ -570,18 +633,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order_Auction">
-          <End Role="Auction" Type="Self.Auction" Multiplicity="0..1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Auction">
-              <PropertyRef Name="idauction" />
-            </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="idauction" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Blog_TypeBlog">
           <End Role="TypeBlog" Type="Self.TypeBlog" Multiplicity="0..1" />
           <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
@@ -639,6 +690,30 @@
             </Principal>
             <Dependent Role="Product">
               <PropertyRef Name="idimgpro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notification_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="idproduct" />
+            </Principal>
+            <Dependent Role="Notification">
+              <PropertyRef Name="idproduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payments_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Payments" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="idproduct" />
+            </Principal>
+            <Dependent Role="Payments">
+              <PropertyRef Name="idproduct" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -708,7 +783,8 @@
           <EntitySet Name="Chats" EntityType="Self.Chat" />
           <EntitySet Name="DesciptionProducts" EntityType="Self.DesciptionProduct" />
           <EntitySet Name="ImageProducts" EntityType="Self.ImageProduct" />
-          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="Notifications" EntityType="Self.Notification" />
+          <EntitySet Name="Payments" EntityType="Self.Payment" />
           <EntitySet Name="Products" EntityType="Self.Product" />
           <EntitySet Name="Reviews" EntityType="Self.Review" />
           <EntitySet Name="Roles" EntityType="Self.Role" />
@@ -720,10 +796,6 @@
           <AssociationSet Name="FK_Auction_Product" Association="Self.FK_Auction_Product">
             <End Role="Product" EntitySet="Products" />
             <End Role="Auction" EntitySet="Auctions" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_Auction" Association="Self.FK_Order_Auction">
-            <End Role="Auction" EntitySet="Auctions" />
-            <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="FK_Blog_TypeBlog" Association="Self.FK_Blog_TypeBlog">
             <End Role="TypeBlog" EntitySet="TypeBlogs" />
@@ -744,6 +816,14 @@
           <AssociationSet Name="FK_Product_ImageProduct" Association="Self.FK_Product_ImageProduct">
             <End Role="ImageProduct" EntitySet="ImageProducts" />
             <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notification_Product" Association="Self.FK_Notification_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Notification" EntitySet="Notifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payments_Product" Association="Self.FK_Payments_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Payments" EntitySet="Payments" />
           </AssociationSet>
           <AssociationSet Name="FK_Product_TypeProduct" Association="Self.FK_Product_TypeProduct">
             <End Role="TypeProduct" EntitySet="TypeProducts" />
@@ -838,13 +918,36 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Orders">
-            <EntityTypeMapping TypeName="MegaAuctionModel.Order">
-              <MappingFragment StoreEntitySet="Order">
-                <ScalarProperty Name="idorder" ColumnName="idorder" />
-                <ScalarProperty Name="dateorder" ColumnName="dateorder" />
-                <ScalarProperty Name="timeorder" ColumnName="timeorder" />
-                <ScalarProperty Name="idauction" ColumnName="idauction" />
+          <EntitySetMapping Name="Notifications">
+            <EntityTypeMapping TypeName="MegaAuctionModel.Notification">
+              <MappingFragment StoreEntitySet="Notification">
+                <ScalarProperty Name="idNotif" ColumnName="idNotif" />
+                <ScalarProperty Name="titleN" ColumnName="titleN" />
+                <ScalarProperty Name="contentN" ColumnName="contentN" />
+                <ScalarProperty Name="dateN" ColumnName="dateN" />
+                <ScalarProperty Name="statusNotif" ColumnName="statusNotif" />
+                <ScalarProperty Name="idproduct" ColumnName="idproduct" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="MegaAuctionModel.Payment">
+              <MappingFragment StoreEntitySet="Payments">
+                <ScalarProperty Name="idpay" ColumnName="idpay" />
+                <ScalarProperty Name="method" ColumnName="method" />
+                <ScalarProperty Name="currency" ColumnName="currency" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="tax" ColumnName="tax" />
+                <ScalarProperty Name="ship" ColumnName="ship" />
+                <ScalarProperty Name="namecontact" ColumnName="namecontact" />
+                <ScalarProperty Name="phonecontact" ColumnName="phonecontact" />
+                <ScalarProperty Name="addresscontact" ColumnName="addresscontact" />
+                <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="idproduct" ColumnName="idproduct" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -4,28 +4,30 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c8befa91fdb141ec8af1a8aa4c307b70" Name="Diagram1">
-        <EntityTypeShape EntityType="MegaAuctionModel.Auction" Width="1.5" PointX="10.5" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MegaAuctionModel.Blog" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MegaAuctionModel.Chat" Width="1.5" PointX="7.5" PointY="17.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MegaAuctionModel.DesciptionProduct" Width="1.5" PointX="6" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="MegaAuctionModel.ImageProduct" Width="1.5" PointX="6" PointY="11.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="MegaAuctionModel.Order" Width="1.5" PointX="12.75" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MegaAuctionModel.Product" Width="1.5" PointX="8.25" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MegaAuctionModel.Review" Width="1.5" PointX="10.5" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MegaAuctionModel.Role" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MegaAuctionModel.RoomChat" Width="1.5" PointX="5.25" PointY="18.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="MegaAuctionModel.sysdiagram" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MegaAuctionModel.TypeBlog" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MegaAuctionModel.TypeProduct" Width="1.5" PointX="6" PointY="14.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="MegaAuctionModel.User" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+      <Diagram DiagramId="e3b63e5cf7304b5ab8527a6883d9aacc" Name="Diagram1">
+        <EntityTypeShape EntityType="MegaAuctionModel.Auction" Width="1.5" PointX="10.5" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MegaAuctionModel.Blog" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MegaAuctionModel.Chat" Width="1.5" PointX="7.5" PointY="29.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MegaAuctionModel.DesciptionProduct" Width="1.5" PointX="6" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MegaAuctionModel.ImageProduct" Width="1.5" PointX="6" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MegaAuctionModel.Notification" Width="1.5" PointX="10.5" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MegaAuctionModel.Payment" Width="1.5" PointX="10.5" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MegaAuctionModel.Product" Width="1.5" PointX="8.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MegaAuctionModel.Review" Width="1.5" PointX="10.5" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MegaAuctionModel.Role" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MegaAuctionModel.RoomChat" Width="1.5" PointX="5.25" PointY="30.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MegaAuctionModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MegaAuctionModel.TypeBlog" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MegaAuctionModel.TypeProduct" Width="1.5" PointX="6" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MegaAuctionModel.User" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
         <AssociationConnector Association="MegaAuctionModel.FK_Auction_Product" ManuallyRouted="false" />
-        <AssociationConnector Association="MegaAuctionModel.FK_Order_Auction" ManuallyRouted="false" />
         <AssociationConnector Association="MegaAuctionModel.FK_Blog_TypeBlog" ManuallyRouted="false" />
         <AssociationConnector Association="MegaAuctionModel.FK_Blog_User" ManuallyRouted="false" />
         <AssociationConnector Association="MegaAuctionModel.FK_Chat_RoomChat" ManuallyRouted="false" />
         <AssociationConnector Association="MegaAuctionModel.FK_Product_DesciptionProduct" ManuallyRouted="false" />
         <AssociationConnector Association="MegaAuctionModel.FK_Product_ImageProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="MegaAuctionModel.FK_Notification_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="MegaAuctionModel.FK_Payments_Product" ManuallyRouted="false" />
         <AssociationConnector Association="MegaAuctionModel.FK_Product_TypeProduct" ManuallyRouted="false" />
         <AssociationConnector Association="MegaAuctionModel.FK_Product_User" ManuallyRouted="false" />
         <AssociationConnector Association="MegaAuctionModel.FK_Reviews_Product" ManuallyRouted="false" />

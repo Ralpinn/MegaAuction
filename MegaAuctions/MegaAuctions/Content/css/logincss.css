@@ -6,113 +6,126 @@
     font-family: calibri;
 }
 
-body{
+.login123 {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 350px;
+    margin: 30px 0px 30px 0px;
     width: 100vw;
+    height: auto;
 }
 
-.login {
+.formlogin {
+    border: 0.5px solid black;
+    padding: 0px 30px;
+    box-shadow: 5px 5px 10px;
+    background-image: linear-gradient(to right, #a7c8fc, #f1f3fe);
+}
+.formlogin .login {
     text-align: center;
     position: relative;
-    width: 350px;
+    width: 400px;
+    height: 550px;
 }
 
-input, button {
+.formlogin input, .formlogin button {
     width: 100%;
     border: 0;
     border-radius: 20px;
 }
 
-input{
-    border-bottom: 2px solid #444;
-    padding: 12px 40px 12px 20px;
-}
+    .formlogin input {
+        border-bottom: 2px solid #444;
+        font-size: 18px;
+        padding: 12px 40px 12px 20px;
+    }
 
 
-input, button, .group i, p, a{
-    font-size: 13.3333px;
-    font-weight: 600;
-}
+    .formlogin input, .formlogin button, .formlogin .group i, .formlogin p, .formlogin a {
+        font-size: 18px;
+        height: 60px;
+        margin-bottom: 10px
+    }
 
-.group{
-    margin-bottom: 20px;
+.formlogin .group {
+    margin-bottom: 25px;
     position: relative;
 }
 
-.group i{
-    position: absolute;
-    top: 15px;
-    right: 20px;
-}
+    .formlogin .group i {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+    }
 
-button {
-    padding: 12px;
-    background-image: linear-gradient(to right, #ff1464, purple);
-    margin-bottom: 20px;
-    cursor: pointer;
-}
+    .formlogin button {
+        padding: 12px;
+        background-image: linear-gradient(to right, #3a86ff, purple);
+        margin-bottom: 20px;
+        cursor: pointer;
+    }
 
-button, button i{
-    color: #ffffff;
-}
+    .formlogin button, .formlogin button i {
+        color: #ffffff;
+    }
 
-button i{
+.formlogin button i {
     margin-right: 5px;
 }
 
-p{
+.formlogin p {
     margin-bottom: 20px;
 }
 
-i.fa.fa-empire, a{
-    color: #ff1464;
-}
+    .formlogin i.fa.fa-empire, .formlogin a {
+        color: #3a86ff;
+    }
 
-i.fa.fa-empire{
+.formlogin i.fa.fa-empire {
     font-size: 60px;
     margin-bottom: 20px;
+}
+
+.formlogin h2 {
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: 700;
 
 }
 
-h2{
-    margin-bottom: 20px;
-}
-
-input:focus, input:focus::placeholder, input:focus+i{
+.formlogin input:focus, .formlogin input:focus::placeholder, .formlogin input:focus + i {
     color: #ff1464;
 }
 
-input:focus, button:focus{
+.formlogin input:focus, .formlogin button:focus {
     outline: 0;
 }
 
 
-body:before, body:after{
+/*.login123:before, .login123:after {
     content: "";
     position: absolute;
     height: 300px;
     width: 500px;
 }
 
-body:before{
+.login123:before {
     background-image: linear-gradient(to right, #ff1464, purple);
     bottom: 0;
     left: 0;
     clip-path: polygon(0 0, 0 100%, 100% 100%);
 }
 
-body:after{
+.login123:after {
     background-image: linear-gradient(to right, purple, #ff1464);
     top: 0;
     right: 0;
     clip-path: polygon(100% 0, 0 0, 100% 100%);
-}
+}*/
 
 @media (max-width: 767px){
-    body:before, body:after{
+    .login123:before, .login123:after {
         height: 150px;
         width: 300px;
     }

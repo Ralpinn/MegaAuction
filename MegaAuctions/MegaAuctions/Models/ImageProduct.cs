@@ -26,8 +26,7 @@ namespace MegaAuctions.Models
         public string image3 { get; set; }
         public string image4 { get; set; }
         public string image5 { get; set; }
-
-        
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }
     }
